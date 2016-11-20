@@ -236,33 +236,15 @@ public class MainFrame {
                         toArray(String[]::new);
                 Double[] numbers = new Double[lineSplit.length + 1];
                 numbers[0] = -1.0;
-                for (int i = 1; i <= lineSplit.length; i++) {
+                for (int i = 1; i <= lineSplit.length; i++)
                     numbers[i] = Double.parseDouble(lineSplit[i - 1]);
-                }
                 input.add(numbers);
-                line = br.readLine();
-            }
-            for (Double[] x : input) {
-                Double output = x[x.length - 1];
+                Double output = numbers[numbers.length - 1];
                 if (!outputKinds.contains(output))
                     outputKinds.add(output);
+                line = br.readLine();
             }
-            int[] trainKindTimes = new int[outputKinds.size()];
-            int[] testKindTimes = new int[outputKinds.size()];
-            for (Double[] x : input) {
-                Double output = x[x.length - 1];
-                int i;
-                for (i = 0; i < outputKinds.size(); i++)
-                    if (output.equals(outputKinds.get(i)))
-                        break;
-                if (trainKindTimes[i] == 0 || testKindTimes[i] > trainKindTimes[i] / 2) {
-                    ++trainKindTimes[i];
-                    trainData.add(x);
-                } else {
-                    ++testKindTimes[i];
-                    testData.add(x);
-                }
-            }
+            initialData();
             ArrayList<String> header = new ArrayList<>();
             header.add("w");
             for (int i = 1; i < trainData.get(0).length - 1; i++)
@@ -293,6 +275,25 @@ public class MainFrame {
         trainTableModel.setRowCount(0);
         testTableModel.setColumnCount(0);
         testTableModel.setRowCount(0);
+    }
+
+    private void initialData() {
+        int[] trainKindTimes = new int[outputKinds.size()];
+        int[] testKindTimes = new int[outputKinds.size()];
+        for (Double[] x : input) {
+            Double output = x[x.length - 1];
+            int i;
+            for (i = 0; i < outputKinds.size(); i++)
+                if (output.equals(outputKinds.get(i)))
+                    break;
+            if (trainKindTimes[i] == 0 || testKindTimes[i] > trainKindTimes[i] / 2) {
+                ++trainKindTimes[i];
+                trainData.add(x);
+            } else {
+                ++testKindTimes[i];
+                testData.add(x);
+            }
+        }
     }
 
     private void startTrain() {
