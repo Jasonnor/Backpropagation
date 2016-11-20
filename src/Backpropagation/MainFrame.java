@@ -1,5 +1,7 @@
 package Backpropagation;
 
+import Backpropagation.Util.MainUtil;
+
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -12,12 +14,12 @@ import java.io.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Random;
 
 import static javax.swing.border.TitledBorder.CENTER;
 import static javax.swing.border.TitledBorder.DEFAULT_POSITION;
 
 public class MainFrame {
+
     private static JMenuItem loadMenuItem;
     private static JMenuItem generateMenuItem;
     private static JFrame frame;
@@ -105,11 +107,11 @@ public class MainFrame {
 
             void changeRate() {
                 try {
-                    alertBackground(learningTextField, false);
+                    MainUtil.alertBackground(learningTextField, false);
                     rate = Double.valueOf(learningTextField.getText());
                     startTrain();
                 } catch (NumberFormatException e) {
-                    alertBackground(learningTextField, true);
+                    MainUtil.alertBackground(learningTextField, true);
                     rate = 0.5f;
                 }
             }
@@ -129,11 +131,11 @@ public class MainFrame {
 
             void changeThreshold() {
                 try {
-                    alertBackground(thresholdTextField, false);
+                    MainUtil.alertBackground(thresholdTextField, false);
                     threshold = Double.valueOf(thresholdTextField.getText());
                     startTrain();
                 } catch (NumberFormatException e) {
-                    alertBackground(thresholdTextField, true);
+                    MainUtil.alertBackground(thresholdTextField, true);
                     threshold = 0;
                 }
             }
@@ -153,11 +155,11 @@ public class MainFrame {
 
             void changeMaxTimes() {
                 try {
-                    alertBackground(maxTimesValue, false);
+                    MainUtil.alertBackground(maxTimesValue, false);
                     maxTimes = Integer.valueOf(maxTimesValue.getText());
                     startTrain();
                 } catch (NumberFormatException e) {
-                    alertBackground(maxTimesValue, true);
+                    MainUtil.alertBackground(maxTimesValue, true);
                     maxTimes = 1000;
                 }
             }
@@ -178,14 +180,14 @@ public class MainFrame {
             void changeMinRange() {
                 try {
                     if (Double.valueOf(wRangeMinValue.getText()) > maxRange)
-                        alertBackground(wRangeMinValue, true);
+                        MainUtil.alertBackground(wRangeMinValue, true);
                     else {
-                        alertBackground(wRangeMinValue, false);
+                        MainUtil.alertBackground(wRangeMinValue, false);
                         minRange = Double.valueOf(wRangeMinValue.getText());
                         startTrain();
                     }
                 } catch (NumberFormatException e) {
-                    alertBackground(wRangeMinValue, true);
+                    MainUtil.alertBackground(wRangeMinValue, true);
                     minRange = -0.5f;
                 }
             }
@@ -206,14 +208,14 @@ public class MainFrame {
             void changeMaxRange() {
                 try {
                     if (Double.valueOf(wRangeMaxValue.getText()) < minRange)
-                        alertBackground(wRangeMaxValue, true);
+                        MainUtil.alertBackground(wRangeMaxValue, true);
                     else {
-                        alertBackground(wRangeMaxValue, false);
+                        MainUtil.alertBackground(wRangeMaxValue, false);
                         maxRange = Double.valueOf(wRangeMaxValue.getText());
                         startTrain();
                     }
                 } catch (NumberFormatException e) {
-                    alertBackground(wRangeMaxValue, true);
+                    MainUtil.alertBackground(wRangeMaxValue, true);
                     maxRange = 0.5f;
                 }
             }
@@ -308,7 +310,7 @@ public class MainFrame {
         Double[] w = new Double[trainData.get(0).length - 1];
         w[0] = threshold;
         for (int i = 1; i < trainData.get(0).length - 1; i++)
-            w[i] = getRandomNumber();
+            w[i] = MainUtil.getRandomNumber(minRange, maxRange);
         int wi = outputKinds.indexOf(dy);
         if (wi == 0) weights.clear();
         weights.add(w);
@@ -360,25 +362,6 @@ public class MainFrame {
         }
         testingValue.setText((double) correct / testData.size() * 100 + "%");
         coordinatePanel.repaint();
-    }
-
-    private void alertBackground(JTextField textField, boolean alert) {
-        if (alert)
-            textField.setBackground(Color.PINK);
-        else
-            textField.setBackground(Color.WHITE);
-    }
-
-    private Double getRandomNumber() {
-        Random r = new Random();
-        return minRange + (maxRange - minRange) * r.nextDouble();
-    }
-
-    private Double[] convertCoordinate(Double[] oldPoint) {
-        Double[] newPoint = new Double[2];
-        newPoint[0] = (oldPoint[0] * magnification) + 250;
-        newPoint[1] = 250 - (oldPoint[1] * magnification);
-        return newPoint;
     }
 
     private static void resetFrame() {
@@ -493,7 +476,7 @@ public class MainFrame {
             // Draw point of file
             if (input.size() > 0 && input.get(0).length == 4) {
                 for (Double[] x : input) {
-                    Double[] point = convertCoordinate(new Double[]{x[1], x[2]});
+                    Double[] point = MainUtil.convertCoordinate(new Double[]{x[1], x[2]}, magnification);
                     g2.setColor(colorArray[(int) Math.round(x[x.length - 1])]);
                     g2.draw(new Line2D.Double(point[0], point[1], point[0], point[1]));
                 }
@@ -505,17 +488,17 @@ public class MainFrame {
                 for (Double[] weight : weights) {
                     Double[] lineStart, lineEnd;
                     if (weight[2] != 0) {
-                        lineStart = convertCoordinate(
+                        lineStart = MainUtil.convertCoordinate(
                                 new Double[]{-250.0 / magnification,
-                                        (weight[0] + 250.0 / magnification * weight[1]) / weight[2]});
-                        lineEnd = convertCoordinate(
+                                        (weight[0] + 250.0 / magnification * weight[1]) / weight[2]}, magnification);
+                        lineEnd = MainUtil.convertCoordinate(
                                 new Double[]{250.0 / magnification,
-                                        (weight[0] - 250.0 / magnification * weight[1]) / weight[2]});
+                                        (weight[0] - 250.0 / magnification * weight[1]) / weight[2]}, magnification);
                     } else {
-                        lineStart = convertCoordinate(
-                                new Double[]{weight[0] / weight[1], 250.0 / magnification});
-                        lineEnd = convertCoordinate(
-                                new Double[]{weight[0] / weight[1], -250.0 / magnification});
+                        lineStart = MainUtil.convertCoordinate(
+                                new Double[]{weight[0] / weight[1], 250.0 / magnification}, magnification);
+                        lineEnd = MainUtil.convertCoordinate(
+                                new Double[]{weight[0] / weight[1], -250.0 / magnification}, magnification);
                     }
                     g2.draw(new Line2D.Double(lineStart[0], lineStart[1], lineEnd[0], lineEnd[1]));
                 }
@@ -525,11 +508,11 @@ public class MainFrame {
         private void drawScale(Graphics2D g2, Double i) {
             Double[] top, btn;
             Double scaleLength = (i % (5.0 * magnification / 5) == 0) ? 2.0 * magnification / 20 : 1.0 * magnification / 20;
-            top = convertCoordinate(new Double[]{(i - 250) / magnification, scaleLength / magnification});
-            btn = convertCoordinate(new Double[]{(i - 250) / magnification, -scaleLength / magnification});
+            top = MainUtil.convertCoordinate(new Double[]{(i - 250) / magnification, scaleLength / magnification}, magnification);
+            btn = MainUtil.convertCoordinate(new Double[]{(i - 250) / magnification, -scaleLength / magnification}, magnification);
             g2.draw(new Line2D.Double(top[0], top[1], btn[0], btn[1]));
-            top = convertCoordinate(new Double[]{-scaleLength / magnification, (250 - i) / magnification});
-            btn = convertCoordinate(new Double[]{scaleLength / magnification, (250 - i) / magnification});
+            top = MainUtil.convertCoordinate(new Double[]{-scaleLength / magnification, (250 - i) / magnification}, magnification);
+            btn = MainUtil.convertCoordinate(new Double[]{scaleLength / magnification, (250 - i) / magnification}, magnification);
             g2.draw(new Line2D.Double(top[0], top[1], btn[0], btn[1]));
         }
     }
