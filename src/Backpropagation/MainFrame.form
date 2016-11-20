@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Backpropagation.MainFrame">
+  <grid id="27dc6" binding="layoutPanel" layout-manager="GridLayoutManager" row-count="12" column-count="8" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="20" left="20" bottom="20" right="20"/>
+    <constraints>
+      <xy x="20" y="-16" width="1060" height="594"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="91b67" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Learning Rate"/>
+        </properties>
+      </component>
+      <component id="742c5" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Training Recognition Rate"/>
+        </properties>
+      </component>
+      <component id="d05c1" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Testing Recognition Rate"/>
+        </properties>
+      </component>
+      <component id="f6d45" class="javax.swing.JTextField" binding="learningTextField">
+        <constraints>
+          <grid row="2" column="3" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="0.1"/>
+        </properties>
+      </component>
+      <component id="ca0a5" class="javax.swing.JButton" binding="loadButton">
+        <constraints>
+          <grid row="0" column="2" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="&amp;Load"/>
+        </properties>
+      </component>
+      <grid id="8afd3" binding="coordinatePanel" custom-create="true" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="0" row-span="11" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <minimum-size width="500" height="500"/>
+            <preferred-size width="500" height="500"/>
+            <maximum-size width="500" height="500"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <foreground color="-16777216"/>
+        </properties>
+        <border type="none">
+          <color color="-16777216"/>
+        </border>
+        <children/>
+      </grid>
+      <component id="df0a" class="javax.swing.JLabel" binding="loadValue">
+        <constraints>
+          <grid row="1" column="2" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="400" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
+          <text value="File not loaded"/>
+        </properties>
+      </component>
+      <component id="3263a" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Synaptic Weights"/>
+        </properties>
+      </component>
+      <component id="7389b" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Zoomer"/>
+        </properties>
+      </component>
+      <component id="9bedb" class="javax.swing.JSlider" binding="zoomerSlider" custom-create="true">
+        <constraints>
+          <grid row="11" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <inverted value="false"/>
+          <majorTickSpacing value="10"/>
+          <minimum value="10"/>
+          <minorTickSpacing value="5"/>
+          <paintLabels value="true"/>
+          <paintTicks value="true"/>
+          <snapToTicks value="false"/>
+          <value value="50"/>
+          <valueIsAdjusting value="false"/>
+        </properties>
+        <clientProperties>
+          <JSlider.isFilled class="java.lang.Boolean" value="false"/>
+          <Slider.paintThumbArrowShape class="java.lang.Boolean" value="false"/>
+        </clientProperties>
+      </component>
+      <component id="3f263" class="javax.swing.JButton" binding="generateButton" default-binding="true">
+        <constraints>
+          <grid row="11" column="2" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <enabled value="false"/>
+          <text value="&amp;Generate"/>
+        </properties>
+      </component>
+      <component id="440d1" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Final Threshold"/>
+        </properties>
+      </component>
+      <component id="9bf7e" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Convergence Times"/>
+        </properties>
+      </component>
+      <component id="4259c" class="javax.swing.JLabel" binding="timesValue">
+        <constraints>
+          <grid row="6" column="3" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="?"/>
+        </properties>
+      </component>
+      <component id="34a10" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Maximum Convergence"/>
+        </properties>
+      </component>
+      <component id="ce520" class="javax.swing.JTextField" binding="maxTimesValue">
+        <constraints>
+          <grid row="4" column="3" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="1000"/>
+        </properties>
+      </component>
+      <component id="3f310" class="javax.swing.JTextField" binding="wRangeMinValue">
+        <constraints>
+          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="-0.5"/>
+        </properties>
+      </component>
+      <component id="91c2a" class="javax.swing.JTextField" binding="wRangeMaxValue">
+        <constraints>
+          <grid row="5" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="0.5"/>
+        </properties>
+      </component>
+      <component id="f0a36" class="javax.swing.JLabel" binding="fThresholdValue">
+        <constraints>
+          <grid row="7" column="3" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="?"/>
+        </properties>
+      </component>
+      <component id="e727a" class="javax.swing.JLabel" binding="weightsValue">
+        <constraints>
+          <grid row="8" column="3" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="?"/>
+        </properties>
+      </component>
+      <component id="9ab42" class="javax.swing.JLabel" binding="trainingValue">
+        <constraints>
+          <grid row="9" column="3" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="?"/>
+        </properties>
+      </component>
+      <component id="a8255" class="javax.swing.JLabel" binding="testingValue">
+        <constraints>
+          <grid row="10" column="3" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="?"/>
+        </properties>
+      </component>
+      <component id="683d1" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="5" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="~"/>
+        </properties>
+      </component>
+      <component id="3bbd6" class="javax.swing.JTextField" binding="thresholdTextField">
+        <constraints>
+          <grid row="3" column="3" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="0"/>
+        </properties>
+      </component>
+      <component id="4d245" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Initial Threshold"/>
+        </properties>
+      </component>
+      <component id="15e2b" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Initial Weights Range"/>
+        </properties>
+      </component>
+      <component id="4d717" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Training Data"/>
+        </properties>
+      </component>
+      <component id="97079" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="6" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Testing Data"/>
+        </properties>
+      </component>
+      <vspacer id="4e8b7">
+        <constraints>
+          <grid row="0" column="6" row-span="12" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <scrollpane id="c4a82">
+        <constraints>
+          <grid row="1" column="7" row-span="5" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="b6df4" class="javax.swing.JTable" binding="trainTable">
+            <constraints/>
+            <properties>
+              <autoResizeMode value="0"/>
+              <autoscrolls value="true"/>
+              <enabled value="false"/>
+              <preferredScrollableViewportSize width="300" height="-1"/>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
+      <scrollpane id="a9282">
+        <constraints>
+          <grid row="7" column="7" row-span="5" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="4c69d" class="javax.swing.JTable" binding="testTable">
+            <constraints/>
+            <properties>
+              <autoResizeMode value="0"/>
+              <enabled value="false"/>
+              <preferredScrollableViewportSize width="300" height="-1"/>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
+    </children>
+  </grid>
+</form>
