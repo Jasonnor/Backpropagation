@@ -41,11 +41,6 @@ public class NeuralNetwork {
     public NeuralNetwork(int input, int hidden, int output) {
         this.layers = new int[]{input, hidden, output};
         df = new DecimalFormat("#.0#");
-
-        /*
-          Create all neurons and connections Connections are created in the
-          neuron class
-         */
         for (int i = 0; i < layers.length; i++) {
             if (i == 0) { // input layer
                 for (int j = 0; j < layers[i]; j++) {
@@ -152,39 +147,34 @@ public class NeuralNetwork {
         int i = 0;
         for (Neuron n : outputLayer) {
             ArrayList<Connection> connections = n.getAllConnections();
-            for (Connection con : connections) {
-                double ak = n.getOutput();
-                double ai = con.leftNeuron.getOutput();
-                double desiredOutput = expectedOutput[i];
-
-                double partialDerivative = -ak * (1 - ak) * ai
-                        * (desiredOutput - ak);
+            for (Connection connection : connections) {
+                double pervY = connection.leftNeuron.getOutput();
+                double y = n.getOutput();
+                double dy = expectedOutput[i];
+                double partialDerivative = (dy - y) * -y * (1 - y) * pervY;
                 double deltaWeight = -learningRate * partialDerivative;
-                double newWeight = con.getWeight() + deltaWeight;
-                con.setDeltaWeight(deltaWeight);
-                con.setWeight(newWeight + momentum * con.getPrevDeltaWeight());
+                double newWeight = connection.getWeight() + deltaWeight;
+                connection.setDeltaWeight(deltaWeight);
+                connection.setWeight(newWeight + momentum * connection.getPrevDeltaWeight());
             }
             i++;
         }
 
-        // update weights for the hidden layer
         for (Neuron n : hiddenLayer) {
             ArrayList<Connection> connections = n.getAllConnections();
             for (Connection con : connections) {
-                double aj = n.getOutput();
-                double ai = con.leftNeuron.getOutput();
-                double sumKoutputs = 0;
+                double pervY = con.leftNeuron.getOutput();
+                double y = n.getOutput();
+                double sumOutputs = 0;
                 int j = 0;
-                for (Neuron out_neu : outputLayer) {
-                    double wjk = out_neu.getConnection(n.id).getWeight();
-                    double desiredOutput = expectedOutput[j];
-                    double ak = out_neu.getOutput();
+                for (Neuron outputN : outputLayer) {
+                    double wjk = outputN.getConnection(n.id).getWeight();
+                    double dy = expectedOutput[j];
+                    double yk = outputN.getOutput();
+                    sumOutputs += (-(dy - yk) * yk * (1 - yk) * wjk);
                     j++;
-                    sumKoutputs = sumKoutputs
-                            + (-(desiredOutput - ak) * ak * (1 - ak) * wjk);
                 }
-
-                double partialDerivative = aj * (1 - aj) * ai * sumKoutputs;
+                double partialDerivative = y * (1 - y) * sumOutputs * pervY;
                 double deltaWeight = -learningRate * partialDerivative;
                 double newWeight = con.getWeight() + deltaWeight;
                 con.setDeltaWeight(deltaWeight);
@@ -201,17 +191,13 @@ public class NeuralNetwork {
             error = 0;
             for (int p = 0; p < inputs.length; p++) {
                 setInput(inputs[p]);
-
                 activate();
-
                 output = getOutput();
                 resultOutputs[p] = output;
-
                 for (int j = 0; j < expectedOutputs[p].length; j++) {
                     double err = Math.pow(output[j] - expectedOutputs[p][j], 2);
                     error += err;
                 }
-
                 applyBackpropagation(expectedOutputs[p]);
             }
         }
@@ -219,7 +205,6 @@ public class NeuralNetwork {
         printResult();
 
         System.out.println("Sum of squared errors = " + error);
-        //System.out.println("##### EPOCH " + i+"\n");
         if (i == maxSteps) {
             System.out.println("!Error training try again");
         } else {
