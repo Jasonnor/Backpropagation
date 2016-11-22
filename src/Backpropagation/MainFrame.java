@@ -56,7 +56,6 @@ public class MainFrame {
     private ArrayList<Double[]> inputs = new ArrayList<>();
     private ArrayList<Double[]> trainData = new ArrayList<>();
     private ArrayList<Double[]> testData = new ArrayList<>();
-    private ArrayList<Double[]> weights = new ArrayList<>();
     private ArrayList<Double> outputKinds = new ArrayList<>();
     private Point mouse;
     private int maxTimes = 1000;
@@ -608,28 +607,7 @@ public class MainFrame {
                     g2.draw(new Line2D.Double(point[0], point[1], point[0], point[1]));
                 }
             }
-            g2.setStroke(new BasicStroke(2));
-            // Draw line of decision boundary
-            if (weights.size() != 0 && inputs.get(0).length == 4) {
-                g2.setColor(Color.MAGENTA);
-                for (Double[] weight : weights) {
-                    Double[] lineStart, lineEnd;
-                    if (weight[2] != 0) {
-                        lineStart = convertCoordinate(
-                                new Double[]{-250.0 / magnification,
-                                        (weight[0] + 250.0 / magnification * weight[1]) / weight[2]});
-                        lineEnd = convertCoordinate(
-                                new Double[]{250.0 / magnification,
-                                        (weight[0] - 250.0 / magnification * weight[1]) / weight[2]});
-                    } else {
-                        lineStart = convertCoordinate(
-                                new Double[]{weight[0] / weight[1], 250.0 / magnification});
-                        lineEnd = convertCoordinate(
-                                new Double[]{weight[0] / weight[1], -250.0 / magnification});
-                    }
-                    g2.draw(new Line2D.Double(lineStart[0], lineStart[1], lineEnd[0], lineEnd[1]));
-                }
-            }
+            // TODO: Draw line of decision boundary
         }
 
         private void drawScale(Graphics2D g2, Double i) {

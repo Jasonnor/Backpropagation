@@ -228,23 +228,16 @@ public class NeuralNetwork {
     }
 
     private void printAllWeights() {
-        System.out.println("printAllWeights");
-        // weights for the hidden layer
-        for (Neuron n : hiddenLayer) {
-            ArrayList<Connection> connections = n.getAllConnections();
-            for (Connection con : connections) {
-                double w = con.getWeight();
-                System.out.println("n=" + n.id + " c=" + con.id + " w=" + w);
-            }
-        }
-        // weights for the output layer
-        for (Neuron n : outputLayer) {
-            ArrayList<Connection> connections = n.getAllConnections();
-            for (Connection con : connections) {
-                double w = con.getWeight();
-                System.out.println("n=" + n.id + " c=" + con.id + " w=" + w);
-            }
-        }
+        hiddenLayer.forEach(this::printWeights);
+        outputLayer.forEach(this::printWeights);
         System.out.println();
+    }
+
+    private void printWeights(Neuron n) {
+        ArrayList<Connection> connections = n.getAllConnections();
+        for (Connection con : connections) {
+            double w = con.getWeight();
+            System.out.println("NeuronID = " + n.id + ", ConnectionID = " + con.id + ",Weight = " + w);
+        }
     }
 }
