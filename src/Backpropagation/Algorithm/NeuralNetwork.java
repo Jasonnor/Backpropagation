@@ -12,22 +12,24 @@ public class NeuralNetwork {
     private final ArrayList<Neuron> hiddenLayer = new ArrayList<>();
     private final ArrayList<Neuron> outputLayer = new ArrayList<>();
     private final int[] layers;
-    private final int randomWeightMultiplier = 1;
 
-    final double epsilon = 0.00000000001;
-    final double learningRate = 0.9f;
-    final double momentum = 0.7f;
+    private double epsilon;
+    private double momentum;
+    private double learningRate;
 
     private ArrayList<Double[]> inputs = new ArrayList<>();
     private ArrayList<Double[]> resultOutputs = new ArrayList<>();
-    private double threshold = 0;
 
     // for weight update all
     private final HashMap<String, Double> weightUpdate = new HashMap<>();
 
-    public NeuralNetwork(ArrayList<Double[]> inputs, int hidden) {
+    public NeuralNetwork(ArrayList<Double[]> inputs, int hidden, double epsilon, double momentum,
+                         double learningRate, double threshold, double minRange, double maxRange) {
         this.inputs = inputs;
         this.layers = new int[]{inputs.get(0).length - 1, hidden, 1};
+        this.epsilon = epsilon;
+        this.momentum = momentum;
+        this.learningRate = learningRate;
         df = new DecimalFormat("#.0#");
         for (int i = 0; i < layers.length; i++) {
             if (i == 0) { // input layer
@@ -56,7 +58,7 @@ public class NeuralNetwork {
         for (Neuron neuron : hiddenLayer) {
             ArrayList<Connection> connections = neuron.getAllConnections();
             for (Connection conn : connections) {
-                double newWeight = getRandom();
+                double newWeight = getRandomNumber(minRange, maxRange);
                 conn.setWeight(newWeight);
             }
             connections.get(0).setWeight(threshold);
@@ -64,7 +66,7 @@ public class NeuralNetwork {
         for (Neuron neuron : outputLayer) {
             ArrayList<Connection> connections = neuron.getAllConnections();
             for (Connection conn : connections) {
-                double newWeight = getRandom();
+                double newWeight = getRandomNumber(minRange, maxRange);
                 conn.setWeight(newWeight);
             }
         }
@@ -78,8 +80,8 @@ public class NeuralNetwork {
         }
     }
 
-    private double getRandom() {
-        return randomWeightMultiplier * (rand.nextDouble() * 2 - 1); // [-1;1[
+    private Double getRandomNumber(Double minRange, Double maxRange) {
+        return minRange + (maxRange - minRange) * rand.nextDouble();
     }
 
     private void setInput(Double inputs[]) {

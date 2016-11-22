@@ -44,6 +44,9 @@ public class MainFrame {
     private JTextField wRangeMaxValue;
     private JTable trainTable;
     private JTable testTable;
+    private JTextField hiddenTextField;
+    private JTextField epsilonTextField;
+    private JTextField momentumTextField;
     private DefaultTableModel trainTableModel = new DefaultTableModel();
     private DefaultTableModel testTableModel = new DefaultTableModel();
     private DecimalFormat df = new DecimalFormat("####0.00");
@@ -57,6 +60,9 @@ public class MainFrame {
     private Point mouse;
     private int maxTimes = 1000;
     private int magnification = 50;
+    private int hidden = 4;
+    private double epsilon = 0.000000001;
+    private double momentum = 0.7;
     private double learningRate = 0.1;
     private double threshold = 0;
     private double minRange = -0.5;
@@ -94,6 +100,78 @@ public class MainFrame {
                 super.mouseMoved(e);
                 mouse = e.getPoint();
                 coordinatePanel.repaint();
+            }
+        });
+        hiddenTextField.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                changeHidden();
+            }
+
+            public void removeUpdate(DocumentEvent e) {
+                changeHidden();
+            }
+
+            public void insertUpdate(DocumentEvent e) {
+                changeHidden();
+            }
+
+            void changeHidden() {
+                try {
+                    alertBackground(hiddenTextField, false);
+                    hidden = Integer.valueOf(hiddenTextField.getText());
+                    startTrain();
+                } catch (NumberFormatException e) {
+                    alertBackground(hiddenTextField, true);
+                    hidden = 4;
+                }
+            }
+        });
+        epsilonTextField.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                changeEpsilon();
+            }
+
+            public void removeUpdate(DocumentEvent e) {
+                changeEpsilon();
+            }
+
+            public void insertUpdate(DocumentEvent e) {
+                changeEpsilon();
+            }
+
+            void changeEpsilon() {
+                try {
+                    alertBackground(epsilonTextField, false);
+                    epsilon = Double.valueOf(epsilonTextField.getText());
+                    startTrain();
+                } catch (NumberFormatException e) {
+                    alertBackground(epsilonTextField, true);
+                    epsilon = 0.000000001;
+                }
+            }
+        });
+        momentumTextField.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                changeMomentum();
+            }
+
+            public void removeUpdate(DocumentEvent e) {
+                changeMomentum();
+            }
+
+            public void insertUpdate(DocumentEvent e) {
+                changeMomentum();
+            }
+
+            void changeMomentum() {
+                try {
+                    alertBackground(momentumTextField, false);
+                    momentum = Double.valueOf(momentumTextField.getText());
+                    startTrain();
+                } catch (NumberFormatException e) {
+                    alertBackground(momentumTextField, true);
+                    momentum = 0.5;
+                }
             }
         });
         learningTextField.getDocument().addDocumentListener(new DocumentListener() {
@@ -313,13 +391,10 @@ public class MainFrame {
     }
 
     private void startTrain() {
-        network = new NeuralNetwork(inputs, 4);
+        network = new NeuralNetwork(inputs, hidden, epsilon, momentum,
+                learningRate, threshold, minRange, maxRange);
         double minErrorCondition = 0.01;
         network.run(maxTimes, minErrorCondition);
-        /*if (outputKinds.size() > 2)
-            outputKinds.forEach(this::trainBackpropagation);
-        else
-            trainBackpropagation(outputKinds.get(0));*/
     }
 
     private void trainBackpropagation(Double dy) {
