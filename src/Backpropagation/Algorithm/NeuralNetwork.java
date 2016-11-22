@@ -12,18 +12,16 @@ public class NeuralNetwork {
     private final ArrayList<Neuron> outputLayer = new ArrayList<>();
     private final int[] layers;
 
-    private double epsilon;
     private double momentum;
     private double learningRate;
 
     private ArrayList<Double[]> inputs = new ArrayList<>();
     private ArrayList<Double[]> resultOutputs = new ArrayList<>();
 
-    public NeuralNetwork(ArrayList<Double[]> inputs, int hidden, double epsilon, double momentum,
-                         double learningRate, double threshold, double minRange, double maxRange) {
+    public NeuralNetwork(ArrayList<Double[]> inputs, int hidden, double momentum, double learningRate,
+                         double threshold, double minRange, double maxRange) {
         this.inputs = inputs;
         this.layers = new int[]{inputs.get(0).length - 1, hidden, 1};
-        this.epsilon = epsilon;
         this.momentum = momentum;
         this.learningRate = learningRate;
         df = new DecimalFormat("#.0#");
@@ -95,18 +93,6 @@ public class NeuralNetwork {
     }
 
     private void applyBackpropagation(Double expectedOutput[]) {
-
-        // error check, normalize value ]0;1[
-        for (int i = 0; i < expectedOutput.length; i++) {
-            double d = expectedOutput[i];
-            if (d < 0 || d > 1) {
-                if (d < 0)
-                    expectedOutput[i] = 0 + epsilon;
-                else
-                    expectedOutput[i] = 1 - epsilon;
-            }
-        }
-
         int i = 0;
         for (Neuron n : outputLayer) {
             ArrayList<Connection> connections = n.getAllConnections();

@@ -42,11 +42,10 @@ public class MainFrame {
     private JTextField maxTimesValue;
     private JTextField wRangeMinValue;
     private JTextField wRangeMaxValue;
+    private JTextField hiddenTextField;
+    private JTextField momentumTextField;
     private JTable trainTable;
     private JTable testTable;
-    private JTextField hiddenTextField;
-    private JTextField epsilonTextField;
-    private JTextField momentumTextField;
     private DefaultTableModel trainTableModel = new DefaultTableModel();
     private DefaultTableModel testTableModel = new DefaultTableModel();
     private DecimalFormat df = new DecimalFormat("####0.00");
@@ -61,7 +60,6 @@ public class MainFrame {
     private int maxTimes = 1000;
     private int magnification = 50;
     private int hidden = 4;
-    private double epsilon = 0.000000001;
     private double momentum = 0.7;
     private double learningRate = 0.1;
     private double threshold = 0;
@@ -123,30 +121,6 @@ public class MainFrame {
                 } catch (NumberFormatException e) {
                     alertBackground(hiddenTextField, true);
                     hidden = 4;
-                }
-            }
-        });
-        epsilonTextField.getDocument().addDocumentListener(new DocumentListener() {
-            public void changedUpdate(DocumentEvent e) {
-                changeEpsilon();
-            }
-
-            public void removeUpdate(DocumentEvent e) {
-                changeEpsilon();
-            }
-
-            public void insertUpdate(DocumentEvent e) {
-                changeEpsilon();
-            }
-
-            void changeEpsilon() {
-                try {
-                    alertBackground(epsilonTextField, false);
-                    epsilon = Double.valueOf(epsilonTextField.getText());
-                    startTrain();
-                } catch (NumberFormatException e) {
-                    alertBackground(epsilonTextField, true);
-                    epsilon = 0.000000001;
                 }
             }
         });
@@ -391,8 +365,8 @@ public class MainFrame {
     }
 
     private void startTrain() {
-        network = new NeuralNetwork(inputs, hidden, epsilon, momentum,
-                learningRate, threshold, minRange, maxRange);
+        network = new NeuralNetwork(inputs, hidden, momentum, learningRate,
+                threshold, minRange, maxRange);
         double minErrorCondition = 0.01;
         network.run(maxTimes, minErrorCondition);
     }
