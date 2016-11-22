@@ -146,21 +146,21 @@ public class NeuralNetwork {
                 resultOutputs.add(output);
                 Double[] expectedOutput = new Double[]{input[input.length - 1]};
                 for (int j = 0; j < expectedOutput.length; j++) {
-                    double err = Math.pow(output[j] - expectedOutput[j], 2);
+                    double err = Math.pow(expectedOutput[j] - output[j], 2);
                     error += err;
                 }
                 applyBackpropagation(expectedOutput);
             }
+            error /= 2;
         }
 
         printResult();
 
         System.out.println("Sum of squared errors = " + error);
         if (i == maxSteps) {
-            System.out.println("!Error training try again");
+            System.out.println("Max steps!");
         } else {
             printAllWeights();
-            printWeightUpdate();
         }
     }
 
@@ -184,29 +184,6 @@ public class NeuralNetwork {
                 System.out.print(resultOutputs.get(p)[x] + " ");
             }
             System.out.println();
-        }
-        System.out.println();
-    }
-
-    private void printWeightUpdate() {
-        System.out.println("printWeightUpdate, put this i trainedWeights() and set isTrained to true");
-        // weights for the hidden layer
-        for (Neuron n : hiddenLayer) {
-            ArrayList<Connection> connections = n.getAllConnections();
-            for (Connection con : connections) {
-                String w = df.format(con.getWeight());
-                System.out.println("weightUpdate.put(weightKey(" + n.id + ", "
-                        + con.id + "), " + w + ");");
-            }
-        }
-        // weights for the output layer
-        for (Neuron n : outputLayer) {
-            ArrayList<Connection> connections = n.getAllConnections();
-            for (Connection con : connections) {
-                String w = df.format(con.getWeight());
-                System.out.println("weightUpdate.put(weightKey(" + n.id + ", "
-                        + con.id + "), " + w + ");");
-            }
         }
         System.out.println();
     }

@@ -46,6 +46,7 @@ public class MainFrame {
     private JTextField momentumTextField;
     private JTable trainTable;
     private JTable testTable;
+    private JTextField minErrorTextField;
     private DefaultTableModel trainTableModel = new DefaultTableModel();
     private DefaultTableModel testTableModel = new DefaultTableModel();
     private DecimalFormat df = new DecimalFormat("####0.00");
@@ -65,6 +66,7 @@ public class MainFrame {
     private double threshold = 0;
     private double minRange = -0.5;
     private double maxRange = 0.5;
+    private double minError = 0.01;
 
     private MainFrame() {
         loadButton.addActionListener(e -> {
@@ -220,6 +222,30 @@ public class MainFrame {
                 }
             }
         });
+        minErrorTextField.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                changeMinError();
+            }
+
+            public void removeUpdate(DocumentEvent e) {
+                changeMinError();
+            }
+
+            public void insertUpdate(DocumentEvent e) {
+                changeMinError();
+            }
+
+            void changeMinError() {
+                try {
+                    alertBackground(minErrorTextField, false);
+                    minError = Double.valueOf(minErrorTextField.getText());
+                    startTrain();
+                } catch (NumberFormatException e) {
+                    alertBackground(minErrorTextField, true);
+                    minError = 0.01;
+                }
+            }
+        });
         wRangeMinValue.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
                 changeMinRange();
@@ -365,10 +391,9 @@ public class MainFrame {
     }
 
     private void startTrain() {
-        network = new NeuralNetwork(inputs, hidden, momentum, learningRate,
+        network = new NeuralNetwork(trainData, hidden, momentum, learningRate,
                 threshold, minRange, maxRange);
-        double minErrorCondition = 0.01;
-        network.run(maxTimes, minErrorCondition);
+        network.run(maxTimes, minError);
     }
 
     private void trainBackpropagation(Double dy) {
