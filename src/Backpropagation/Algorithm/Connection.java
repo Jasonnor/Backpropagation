@@ -1,44 +1,38 @@
 package Backpropagation.Algorithm;
 
-public class Connection {
-    double weight = 0;
-    double prevDeltaWeight = 0; // for momentum
-    double deltaWeight = 0;
+class Connection {
+    private double weight = 0;
+    private double prevDeltaWeight = 0; // for momentum
+    private double deltaWeight = 0;
 
     final Neuron leftNeuron;
-    final Neuron rightNeuron;
     static int counter = 0;
-    final public int id; // auto increment, starts at 0
+    final int id; // auto increment, starts at 0
 
-    public Connection(Neuron fromN, Neuron toN) {
+    Connection(Neuron fromN) {
         leftNeuron = fromN;
-        rightNeuron = toN;
         id = counter;
         counter++;
     }
 
-    public double getWeight() {
+    double getWeight() {
         return weight;
     }
 
-    public void setWeight(double w) {
+    void setWeight(double w) {
         weight = w;
     }
 
-    public void setDeltaWeight(double w) {
+    void setDeltaWeight(double w) {
         prevDeltaWeight = deltaWeight;
         deltaWeight = w;
     }
 
-    public double getPrevDeltaWeight() {
+    double getPrevDeltaWeight() {
         return prevDeltaWeight;
     }
 
-    public Neuron getLeftNeuron() {
+    Neuron getLeftNeuron() {
         return leftNeuron;
-    }
-
-    public Neuron getRightNeuron() {
-        return rightNeuron;
     }
 }

@@ -2,20 +2,20 @@ package Backpropagation.Algorithm;
 
 import java.util.*;
 
-public class Neuron {
+class Neuron {
     static int counter = 0;
-    final public int id;  // auto increment, starts at 0
-    double output;
+    final int id;  // auto increment, starts at 0
+    private double output;
 
-    ArrayList<Connection> connections = new ArrayList<>();
-    HashMap<Integer, Connection> connectionLookup = new HashMap<>();
+    private ArrayList<Connection> connections = new ArrayList<>();
+    private HashMap<Integer, Connection> connectionLookup = new HashMap<>();
 
-    public Neuron() {
+    Neuron() {
         id = counter;
         counter++;
     }
 
-    public void calculateOutput() {
+    void calculateOutput() {
         double v = 0;
         for (Connection con : connections) {
             Neuron leftNeuron = con.getLeftNeuron();
@@ -26,35 +26,31 @@ public class Neuron {
         output = sigmoid(v);
     }
 
-    double sigmoid(double x) {
+    private double sigmoid(double x) {
         return 1.0 / (1.0 + (Math.exp(-x)));
     }
 
-    public void addConnections(ArrayList<Neuron> neurons) {
+    void addConnections(ArrayList<Neuron> neurons) {
         for (Neuron n : neurons) {
-            Connection con = new Connection(n, this);
+            Connection con = new Connection(n);
             connections.add(con);
             connectionLookup.put(n.id, con);
         }
     }
 
-    public Connection getConnection(int neuronIndex) {
+    Connection getConnection(int neuronIndex) {
         return connectionLookup.get(neuronIndex);
     }
 
-    public void addConnection(Connection con) {
-        connections.add(con);
-    }
-
-    public ArrayList<Connection> getAllConnections() {
+    ArrayList<Connection> getAllConnections() {
         return connections;
     }
 
-    public double getOutput() {
+    double getOutput() {
         return output;
     }
 
-    public void setOutput(double o) {
+    void setOutput(double o) {
         output = o;
     }
 }

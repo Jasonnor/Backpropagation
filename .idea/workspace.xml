@@ -7,9 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="88f2ab99-ce0f-4f40-bd16-da576e5d48c7" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Backpropagation/Algorithm/Connection.java" afterPath="$PROJECT_DIR$/src/Backpropagation/Algorithm/Connection.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Backpropagation/Algorithm/NeuralNetwork.java" afterPath="$PROJECT_DIR$/src/Backpropagation/Algorithm/NeuralNetwork.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Backpropagation/MainFrame.form" afterPath="$PROJECT_DIR$/src/Backpropagation/MainFrame.form" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Backpropagation/MainFrame.java" afterPath="$PROJECT_DIR$/src/Backpropagation/MainFrame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Backpropagation/Algorithm/Neuron.java" afterPath="$PROJECT_DIR$/src/Backpropagation/Algorithm/Neuron.java" />
     </list>
     <ignored path="HW1_Backpropagation.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainFrame.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainFrame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Backpropagation/MainFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="70" column="24" selection-start-line="70" selection-start-column="24" selection-end-line="70" selection-end-column="24" />
+            <state relative-caret-position="89">
+              <caret line="390" column="5" selection-start-line="390" selection-start-column="5" selection-end-line="390" selection-end-column="5" />
               <folding>
                 <element signature="method#MainFrame#0;class#MainFrame#0" expanded="false" />
                 <element signature="class#4274:5014" expanded="false" />
@@ -96,17 +97,15 @@
       <file leaf-file-name="NeuralNetwork.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Backpropagation/Algorithm/NeuralNetwork.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="699">
-              <caret line="25" column="63" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="63" />
+            <state relative-caret-position="150">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding>
+                <element signature="method#getRandomNumber#0;class#NeuralNetwork#0" expanded="false" />
                 <element signature="method#setInput#0;class#NeuralNetwork#0" expanded="false" />
                 <element signature="method#getOutput#0;class#NeuralNetwork#0" expanded="false" />
                 <element signature="method#activate#0;class#NeuralNetwork#0" expanded="false" />
-                <element signature="method#applyBackpropagation#0;class#NeuralNetwork#0" expanded="false" />
                 <element signature="method#run#0;class#NeuralNetwork#0" expanded="false" />
                 <element signature="method#printResult#0;class#NeuralNetwork#0" expanded="false" />
-                <element signature="docComment;method#updateAllWeights#0;class#NeuralNetwork#0" expanded="false" />
-                <element signature="method#updateAllWeights#0;class#NeuralNetwork#0" expanded="false" />
                 <element signature="method#printWeightUpdate#0;class#NeuralNetwork#0" expanded="false" />
                 <element signature="method#printAllWeights#0;class#NeuralNetwork#0" expanded="false" />
               </folding>
@@ -114,14 +113,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Neuron.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Neuron.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Backpropagation/Algorithm/Neuron.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+            <state relative-caret-position="180">
+              <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
               <folding>
-                <element signature="e#735#736#0" expanded="true" />
-                <element signature="e#786#787#0" expanded="true" />
+                <element signature="e#739#740#0" expanded="true" />
+                <element signature="e#790#791#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -130,8 +129,8 @@
       <file leaf-file-name="Connection.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Backpropagation/Algorithm/Connection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+            <state relative-caret-position="390">
+              <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -172,11 +171,11 @@
         <option value="$PROJECT_DIR$/src/Backpropagation/MainUtil.java" />
         <option value="$PROJECT_DIR$/src/Backpropagation/Util/MutableDouble.java" />
         <option value="$PROJECT_DIR$/src/Backpropagation/Util/MainUtil.java" />
+        <option value="$PROJECT_DIR$/src/Backpropagation/MainFrame.form" />
+        <option value="$PROJECT_DIR$/src/Backpropagation/MainFrame.java" />
         <option value="$PROJECT_DIR$/src/Backpropagation/Algorithm/Connection.java" />
         <option value="$PROJECT_DIR$/src/Backpropagation/Algorithm/Neuron.java" />
         <option value="$PROJECT_DIR$/src/Backpropagation/Algorithm/NeuralNetwork.java" />
-        <option value="$PROJECT_DIR$/src/Backpropagation/MainFrame.form" />
-        <option value="$PROJECT_DIR$/src/Backpropagation/MainFrame.java" />
       </list>
     </option>
   </component>
@@ -249,7 +248,64 @@
       <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
-        <subPane />
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Backpropagation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Backpropagation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Backpropagation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Backpropagation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Backpropagation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Backpropagation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Backpropagation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Backpropagation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Backpropagation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Algorithm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
       </pane>
     </panes>
   </component>
@@ -768,12 +824,12 @@
       <workItem from="1479554376202" duration="594000" />
       <workItem from="1479640152124" duration="11972000" />
       <workItem from="1479736845111" duration="10245000" />
-      <workItem from="1479782786972" duration="19940000" />
+      <workItem from="1479782786972" duration="20393000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="145409000" />
+    <option name="totallyTimeSpent" value="145862000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -787,11 +843,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14519651" sideWeight="0.50476193" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23908296" sideWeight="0.4952381" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23908296" sideWeight="0.4952381" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1404762" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1404762" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -807,6 +863,35 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286026" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14519651" sideWeight="0.50476193" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="616" y="277" width="450" height="456" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35917032" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286026" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23908296" sideWeight="0.4952381" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1404762" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286026" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -821,14 +906,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Backpropagation/Algorithm/NeuralNetwork.java</url>
-          <line>220</line>
-          <properties />
-          <option name="timeStamp" value="116" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="117" />
     </breakpoint-manager>
     <watches-manager>
@@ -915,14 +992,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="method#getRandomNumber#0;class#NeuralNetwork#0" expanded="false" />
             <element signature="method#setInput#0;class#NeuralNetwork#0" expanded="false" />
             <element signature="method#getOutput#0;class#NeuralNetwork#0" expanded="false" />
             <element signature="method#activate#0;class#NeuralNetwork#0" expanded="false" />
-            <element signature="method#applyBackpropagation#0;class#NeuralNetwork#0" expanded="false" />
             <element signature="method#run#0;class#NeuralNetwork#0" expanded="false" />
             <element signature="method#printResult#0;class#NeuralNetwork#0" expanded="false" />
-            <element signature="docComment;method#updateAllWeights#0;class#NeuralNetwork#0" expanded="false" />
-            <element signature="method#updateAllWeights#0;class#NeuralNetwork#0" expanded="false" />
             <element signature="method#printWeightUpdate#0;class#NeuralNetwork#0" expanded="false" />
             <element signature="method#printAllWeights#0;class#NeuralNetwork#0" expanded="false" />
           </folding>
@@ -934,8 +1009,8 @@
         <state relative-caret-position="1020">
           <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding>
-            <element signature="e#735#736#0" expanded="true" />
-            <element signature="e#786#787#0" expanded="true" />
+            <element signature="e#739#740#0" expanded="true" />
+            <element signature="e#790#791#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1014,14 +1089,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="method#getRandomNumber#0;class#NeuralNetwork#0" expanded="false" />
             <element signature="method#setInput#0;class#NeuralNetwork#0" expanded="false" />
             <element signature="method#getOutput#0;class#NeuralNetwork#0" expanded="false" />
             <element signature="method#activate#0;class#NeuralNetwork#0" expanded="false" />
-            <element signature="method#applyBackpropagation#0;class#NeuralNetwork#0" expanded="false" />
             <element signature="method#run#0;class#NeuralNetwork#0" expanded="false" />
             <element signature="method#printResult#0;class#NeuralNetwork#0" expanded="false" />
-            <element signature="docComment;method#updateAllWeights#0;class#NeuralNetwork#0" expanded="false" />
-            <element signature="method#updateAllWeights#0;class#NeuralNetwork#0" expanded="false" />
             <element signature="method#printWeightUpdate#0;class#NeuralNetwork#0" expanded="false" />
             <element signature="method#printAllWeights#0;class#NeuralNetwork#0" expanded="false" />
           </folding>
@@ -1041,8 +1114,8 @@
         <state relative-caret-position="450">
           <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
           <folding>
-            <element signature="e#735#736#0" expanded="true" />
-            <element signature="e#786#787#0" expanded="true" />
+            <element signature="e#739#740#0" expanded="true" />
+            <element signature="e#790#791#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1843,59 +1916,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Backpropagation/Algorithm/Connection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Backpropagation/Algorithm/Neuron.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
-          <folding>
-            <element signature="e#735#736#0" expanded="true" />
-            <element signature="e#786#787#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Backpropagation/Algorithm/NeuralNetwork.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="699">
-          <caret line="25" column="63" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="63" />
-          <folding>
-            <element signature="method#setInput#0;class#NeuralNetwork#0" expanded="false" />
-            <element signature="method#getOutput#0;class#NeuralNetwork#0" expanded="false" />
-            <element signature="method#activate#0;class#NeuralNetwork#0" expanded="false" />
-            <element signature="method#applyBackpropagation#0;class#NeuralNetwork#0" expanded="false" />
-            <element signature="method#run#0;class#NeuralNetwork#0" expanded="false" />
-            <element signature="method#printResult#0;class#NeuralNetwork#0" expanded="false" />
-            <element signature="docComment;method#updateAllWeights#0;class#NeuralNetwork#0" expanded="false" />
-            <element signature="method#updateAllWeights#0;class#NeuralNetwork#0" expanded="false" />
-            <element signature="method#printWeightUpdate#0;class#NeuralNetwork#0" expanded="false" />
-            <element signature="method#printAllWeights#0;class#NeuralNetwork#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Backpropagation/MainFrame.form">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Backpropagation/MainFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="70" column="24" selection-start-line="70" selection-start-column="24" selection-end-line="70" selection-end-column="24" />
+        <state relative-caret-position="89">
+          <caret line="390" column="5" selection-start-line="390" selection-start-column="5" selection-end-line="390" selection-end-column="5" />
           <folding>
             <element signature="method#MainFrame#0;class#MainFrame#0" expanded="false" />
             <element signature="class#4274:5014" expanded="false" />
@@ -1941,6 +1965,53 @@
             <element signature="class#GPanel#0;class#MainFrame#0" expanded="false" />
             <element signature="method#paintComponent#0;class#GPanel#0;class#MainFrame#0" expanded="false" />
             <element signature="method#drawScale#0;class#GPanel#0;class#MainFrame#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Backpropagation/Algorithm/Connection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Backpropagation/Algorithm/NeuralNetwork.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding>
+            <element signature="method#getRandomNumber#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#setInput#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#getOutput#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#activate#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#run#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#printResult#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#printWeightUpdate#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#printAllWeights#0;class#NeuralNetwork#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Backpropagation/MainFrame.form">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Backpropagation/Algorithm/Neuron.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+          <folding>
+            <element signature="e#739#740#0" expanded="true" />
+            <element signature="e#790#791#0" expanded="true" />
           </folding>
         </state>
       </provider>

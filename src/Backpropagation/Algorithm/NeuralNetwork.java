@@ -5,7 +5,6 @@ import java.util.*;
 
 public class NeuralNetwork {
 
-    private final boolean isTrained = false;
     private final DecimalFormat df;
     private final Random rand = new Random();
     private final ArrayList<Neuron> inputLayer = new ArrayList<>();
@@ -19,9 +18,6 @@ public class NeuralNetwork {
 
     private ArrayList<Double[]> inputs = new ArrayList<>();
     private ArrayList<Double[]> resultOutputs = new ArrayList<>();
-
-    // for weight update all
-    private final HashMap<String, Double> weightUpdate = new HashMap<>();
 
     public NeuralNetwork(ArrayList<Double[]> inputs, int hidden, double epsilon, double momentum,
                          double learningRate, double threshold, double minRange, double maxRange) {
@@ -54,7 +50,7 @@ public class NeuralNetwork {
             }
         }
 
-        // initialize random weights
+        // Initialize random weights
         for (Neuron neuron : hiddenLayer) {
             ArrayList<Connection> connections = neuron.getAllConnections();
             for (Connection conn : connections) {
@@ -71,13 +67,9 @@ public class NeuralNetwork {
             }
         }
 
-        // reset id counters
+        // Reset id counters
         Neuron.counter = 0;
         Connection.counter = 0;
-
-        if (isTrained) {
-            updateAllWeights();
-        }
     }
 
     private Double getRandomNumber(Double minRange, Double maxRange) {
@@ -186,7 +178,7 @@ public class NeuralNetwork {
         }
     }
 
-    void printResult() {
+    private void printResult() {
         System.out.println("NN example with xor training");
         for (int p = 0; p < inputs.size(); p++) {
             System.out.print("INPUTS: ");
@@ -210,35 +202,7 @@ public class NeuralNetwork {
         System.out.println();
     }
 
-    String weightKey(int neuronId, int conId) {
-        return "N" + neuronId + "_C" + conId;
-    }
-
-    /**
-     * Take from hash table and put into all weights
-     */
-    public void updateAllWeights() {
-        // update weights for the output layer
-        for (Neuron n : outputLayer) {
-            ArrayList<Connection> connections = n.getAllConnections();
-            for (Connection con : connections) {
-                String key = weightKey(n.id, con.id);
-                double newWeight = weightUpdate.get(key);
-                con.setWeight(newWeight);
-            }
-        }
-        // update weights for the hidden layer
-        for (Neuron n : hiddenLayer) {
-            ArrayList<Connection> connections = n.getAllConnections();
-            for (Connection con : connections) {
-                String key = weightKey(n.id, con.id);
-                double newWeight = weightUpdate.get(key);
-                con.setWeight(newWeight);
-            }
-        }
-    }
-
-    public void printWeightUpdate() {
+    private void printWeightUpdate() {
         System.out.println("printWeightUpdate, put this i trainedWeights() and set isTrained to true");
         // weights for the hidden layer
         for (Neuron n : hiddenLayer) {
@@ -261,7 +225,7 @@ public class NeuralNetwork {
         System.out.println();
     }
 
-    public void printAllWeights() {
+    private void printAllWeights() {
         System.out.println("printAllWeights");
         // weights for the hidden layer
         for (Neuron n : hiddenLayer) {
