@@ -47,6 +47,7 @@ public class MainFrame {
     private JTextField minErrorTextField;
     private JLabel MSEValue;
     private JTextField sizeTextField;
+    private JCheckBox drawModeCheckBox;
     private DefaultTableModel trainTableModel = new DefaultTableModel();
     private DefaultTableModel testTableModel = new DefaultTableModel();
     private DecimalFormat df = new DecimalFormat("####0.00");
@@ -67,7 +68,8 @@ public class MainFrame {
     private double minRange = -0.5;
     private double maxRange = 0.5;
     private double minError = 0.01;
-    private double size = -1.0;
+    private double size = 20.0;
+    private boolean drawMode = false;
 
     private MainFrame() {
         loadButton.addActionListener(e -> {
@@ -99,9 +101,15 @@ public class MainFrame {
             @Override
             public void mouseMoved(MouseEvent e) {
                 super.mouseMoved(e);
-                mouse = e.getPoint();
-                coordinatePanel.repaint();
+                if (!drawMode) {
+                    mouse = e.getPoint();
+                    coordinatePanel.repaint();
+                }
             }
+        });
+        drawModeCheckBox.addActionListener(e -> {
+            drawMode = !drawMode;
+            coordinatePanel.repaint();
         });
         hiddenTextField.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
@@ -323,7 +331,7 @@ public class MainFrame {
                     startTrain();
                 } catch (NumberFormatException e) {
                     alertBackground(sizeTextField, true);
-                    size = -1.0;
+                    size = 20.0;
                 }
             }
         });
@@ -549,14 +557,22 @@ public class MainFrame {
             super.paintComponent(g);
             Graphics2D g2 = (Graphics2D) g;
             // Draw output kind area
-            if (size > 0 && inputs.size() > 0 && inputs.get(0).length == 4) {
+            if (drawMode && size > 0 && inputs.size() > 0 && inputs.get(0).length == 4) {
+                ArrayList<Double[]> drawInputs = new ArrayList<>();
                 for (Double x = -250.0; x <= 250; x += size) {
                     for (Double y = -250.0; y <= 250; y += size) {
-                        int id = network.getOutputKind(new Double[]{-1.0, x / magnification, y / magnification}, maxTimes, minError);
-                        g2.setColor(colorArray[colorArray.length - id - 1]);
+                        drawInputs.add(new Double[]{-1.0, x / magnification, y / magnification});
+                    }
+                }
+                int id[] = network.getOutputKind(drawInputs, maxTimes, minError);
+                int i = 0;
+                for (Double x = -250.0; x <= 250; x += size) {
+                    for (Double y = -250.0; y <= 250; y += size) {
+                        g2.setColor(colorArray[colorArray.length - id[i] - 1]);
                         Double[] point = convertCoordinate(new Double[]{x / magnification, y / magnification});
                         Rectangle2D rect = new Rectangle2D.Double(point[0], point[1], size, size);
                         g2.fill(rect);
+                        i++;
                     }
                 }
             }

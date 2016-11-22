@@ -196,29 +196,33 @@ public class NeuralNetwork {
         return (double) correct / inputs.size() * 100 + "%";
     }
 
-    public int getOutputKind(Double[] input, int maxSteps, double minError) {
-        int i, y = 0;
+    public int[] getOutputKind(ArrayList<Double[]> inputs, int maxSteps, double minError) {
+        int i, y[] = new int[inputs.size()];
         double error = 1;
         for (i = 0; i < maxSteps && error > minError; i++) {
             error = 0;
-            setInput(input);
-            activate();
-            Double[] output = getOutput();
-            Double[] expectedOutput = new Double[]{input[input.length - 1]};
-            for (int j = 0; j < expectedOutput.length; j++) {
-                double err = Math.pow(expectedOutput[j] - output[j], 2) / 2;
-                error += err;
-            }
-            double distance = Math.abs(outputKinds.get(0) - output[0]);
-            int idx = 0;
-            for (int j = 1; j < outputKinds.size(); j++) {
-                double newDistance = Math.abs(outputKinds.get(j) - output[0]);
-                if (newDistance < distance) {
-                    idx = j;
-                    distance = newDistance;
+            int yi = 0;
+            for (Double[] input : inputs) {
+                setInput(input);
+                activate();
+                Double[] output = getOutput();
+                Double[] expectedOutput = new Double[]{input[input.length - 1]};
+                for (int j = 0; j < expectedOutput.length; j++) {
+                    double err = Math.pow(expectedOutput[j] - output[j], 2) / 2;
+                    error += err;
                 }
+                double distance = Math.abs(outputKinds.get(0) - output[0]);
+                int idx = 0;
+                for (int j = 1; j < outputKinds.size(); j++) {
+                    double newDistance = Math.abs(outputKinds.get(j) - output[0]);
+                    if (newDistance < distance) {
+                        idx = j;
+                        distance = newDistance;
+                    }
+                }
+                y[yi] = idx;
+                yi++;
             }
-            y = idx;
         }
         return y;
     }
