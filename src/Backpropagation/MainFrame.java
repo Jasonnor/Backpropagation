@@ -57,7 +57,7 @@ public class MainFrame {
     private Point mouse;
     private int maxTimes = 1000;
     private int magnification = 50;
-    private double rate = 0.1;
+    private double learningRate = 0.1;
     private double threshold = 0;
     private double minRange = -0.5;
     private double maxRange = 0.5;
@@ -112,11 +112,11 @@ public class MainFrame {
             void changeRate() {
                 try {
                     alertBackground(learningTextField, false);
-                    rate = Double.valueOf(learningTextField.getText());
+                    learningRate = Double.valueOf(learningTextField.getText());
                     startTrain();
                 } catch (NumberFormatException e) {
                     alertBackground(learningTextField, true);
-                    rate = 0.5f;
+                    learningRate = 0.5f;
                 }
             }
         });
@@ -344,7 +344,7 @@ public class MainFrame {
                 Double e = y - fx;
                 if (e == 0) ++correct;
                 for (int i = 0; i < weights.get(wi).length; i++) {
-                    weights.get(wi)[i] = weights.get(wi)[i] + rate * e * x[i];
+                    weights.get(wi)[i] = weights.get(wi)[i] + learningRate * e * x[i];
                 }
             }
             if (correct == trainData.size()) break;

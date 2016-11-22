@@ -5,8 +5,6 @@ import java.util.*;
 public class Neuron {
     static int counter = 0;
     final public int id;  // auto increment, starts at 0
-    Connection thresholdConnection;
-    final double threshold = -1;
     double output;
 
     ArrayList<Connection> connections = new ArrayList<>();
@@ -25,7 +23,6 @@ public class Neuron {
             double y = leftNeuron.getOutput();
             v += weight * y;
         }
-        v += thresholdConnection.getWeight() * threshold;
         output = sigmoid(v);
     }
 
@@ -49,18 +46,8 @@ public class Neuron {
         connections.add(con);
     }
 
-    public void addThresholdConnection(Neuron n) {
-        Connection con = new Connection(n, this);
-        thresholdConnection = con;
-        connections.add(con);
-    }
-
     public ArrayList<Connection> getAllConnections() {
         return connections;
-    }
-
-    public double getThreshold() {
-        return threshold;
     }
 
     public double getOutput() {

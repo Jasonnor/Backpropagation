@@ -11,17 +11,16 @@ public class NeuralNetwork {
     private final ArrayList<Neuron> inputLayer = new ArrayList<>();
     private final ArrayList<Neuron> hiddenLayer = new ArrayList<>();
     private final ArrayList<Neuron> outputLayer = new ArrayList<>();
-    private final Neuron threshold = new Neuron();
     private final int[] layers;
     private final int randomWeightMultiplier = 1;
 
     final double epsilon = 0.00000000001;
-
     final double learningRate = 0.9f;
     final double momentum = 0.7f;
 
     private ArrayList<Double[]> inputs = new ArrayList<>();
     private ArrayList<Double[]> resultOutputs = new ArrayList<>();
+    private double threshold = 0;
 
     // for weight update all
     private final HashMap<String, Double> weightUpdate = new HashMap<>();
@@ -40,14 +39,12 @@ public class NeuralNetwork {
                 for (int j = 0; j < layers[i]; j++) {
                     Neuron neuron = new Neuron();
                     neuron.addConnections(inputLayer);
-                    neuron.addThresholdConnection(threshold);
                     hiddenLayer.add(neuron);
                 }
             } else if (i == 2) { // output layer
                 for (int j = 0; j < layers[i]; j++) {
                     Neuron neuron = new Neuron();
                     neuron.addConnections(hiddenLayer);
-                    neuron.addThresholdConnection(threshold);
                     outputLayer.add(neuron);
                 }
             } else {
@@ -62,6 +59,7 @@ public class NeuralNetwork {
                 double newWeight = getRandom();
                 conn.setWeight(newWeight);
             }
+            connections.get(0).setWeight(threshold);
         }
         for (Neuron neuron : outputLayer) {
             ArrayList<Connection> connections = neuron.getAllConnections();
@@ -102,13 +100,6 @@ public class NeuralNetwork {
         outputLayer.forEach(Neuron::calculateOutput);
     }
 
-    /**
-     * all output propagate back
-     *
-     * @param expectedOutput first calculate the partial derivative of the error with
-     *                       respect to each of the weight leading into the output neurons
-     *                       threshold is also updated here
-     */
     private void applyBackpropagation(Double expectedOutput[]) {
 
         // error check, normalize value ]0;1[
@@ -244,7 +235,6 @@ public class NeuralNetwork {
             }
         }
     }
-
 
     public void printWeightUpdate() {
         System.out.println("printWeightUpdate, put this i trainedWeights() and set isTrained to true");
