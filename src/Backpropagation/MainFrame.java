@@ -11,9 +11,12 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.Line2D;
 import java.io.*;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
 
 import static javax.swing.border.TitledBorder.CENTER;
@@ -44,7 +47,7 @@ public class MainFrame {
     private DefaultTableModel trainTableModel = new DefaultTableModel();
     private DefaultTableModel testTableModel = new DefaultTableModel();
     private DecimalFormat df = new DecimalFormat("####0.00");
-    private Color[] colorArray = {Color.GREEN, Color.BLUE, Color.RED, Color.YELLOW, Color.CYAN, Color.PINK};
+    private Color[] colorArray = {Color.BLUE, Color.RED, Color.GREEN, Color.YELLOW, Color.CYAN, Color.PINK};
     private NeuralNetwork network;
     private ArrayList<Double[]> inputs = new ArrayList<>();
     private ArrayList<Double[]> trainData = new ArrayList<>();
@@ -281,6 +284,16 @@ public class MainFrame {
     }
 
     private void initialData() {
+        // Normalize expected output
+        Double outputMin = Collections.min(outputKinds);
+        Double outputMax = Collections.max(outputKinds);
+        for (Double[] input : inputs) {
+            input[input.length - 1] = normalize(input[input.length - 1], outputMin, outputMax);
+        }
+        for (int i = 0; i < outputKinds.size(); i++) {
+            outputKinds.set(i, normalize(outputKinds.get(i), outputMin, outputMax));
+        }
+        // Split input into train & test
         int[] trainKindTimes = new int[outputKinds.size()];
         int[] testKindTimes = new int[outputKinds.size()];
         for (Double[] x : inputs) {
@@ -301,10 +314,8 @@ public class MainFrame {
 
     private void startTrain() {
         network = new NeuralNetwork(inputs, 4);
-        int maxRuns = 1000;
         double minErrorCondition = 0.01;
-        network.run(maxRuns, minErrorCondition);
-
+        network.run(maxTimes, minErrorCondition);
         /*if (outputKinds.size() > 2)
             outputKinds.forEach(this::trainBackpropagation);
         else
@@ -370,11 +381,15 @@ public class MainFrame {
         coordinatePanel.repaint();
     }
 
-    private void alertBackground(JTextField textField, boolean alert) {
-        if (alert)
-            textField.setBackground(Color.PINK);
-        else
-            textField.setBackground(Color.WHITE);
+    private Double round(Double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+        BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
+
+    private Double normalize(Double input, Double min, Double max) {
+        return round((input - min) / (max - min), 4);
     }
 
     private Double getRandomNumber() {
@@ -387,6 +402,13 @@ public class MainFrame {
         newPoint[0] = (oldPoint[0] * magnification) + 250;
         newPoint[1] = 250 - (oldPoint[1] * magnification);
         return newPoint;
+    }
+
+    private void alertBackground(JTextField textField, boolean alert) {
+        if (alert)
+            textField.setBackground(Color.PINK);
+        else
+            textField.setBackground(Color.WHITE);
     }
 
     private static void resetFrame() {
@@ -502,7 +524,13 @@ public class MainFrame {
             if (inputs.size() > 0 && inputs.get(0).length == 4) {
                 for (Double[] x : inputs) {
                     Double[] point = convertCoordinate(new Double[]{x[1], x[2]});
-                    g2.setColor(colorArray[(int) Math.round(x[x.length - 1])]);
+                    for (int i = 0; i < outputKinds.size(); i++) {
+                        Double outputKind = outputKinds.get(i);
+                        if (x[x.length - 1].equals(outputKind)) {
+                            g2.setColor(colorArray[i]);
+                            break;
+                        }
+                    }
                     g2.draw(new Line2D.Double(point[0], point[1], point[0], point[1]));
                 }
             }
