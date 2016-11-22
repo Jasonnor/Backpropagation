@@ -118,10 +118,8 @@ public class NeuralNetwork {
      * operation
      */
     public void activate() {
-        for (Neuron n : hiddenLayer)
-            n.calculateOutput();
-        for (Neuron n : outputLayer)
-            n.calculateOutput();
+        hiddenLayer.forEach(Neuron::calculateOutput);
+        outputLayer.forEach(Neuron::calculateOutput);
     }
 
     /**
@@ -151,8 +149,8 @@ public class NeuralNetwork {
                 double pervY = connection.leftNeuron.getOutput();
                 double y = n.getOutput();
                 double dy = expectedOutput[i];
-                double partialDerivative = (dy - y) * -y * (1 - y) * pervY;
-                double deltaWeight = -learningRate * partialDerivative;
+                double partialDerivative = (dy - y) * y * (1 - y);
+                double deltaWeight = learningRate * partialDerivative * pervY;
                 double newWeight = connection.getWeight() + deltaWeight;
                 connection.setDeltaWeight(deltaWeight);
                 connection.setWeight(newWeight + momentum * connection.getPrevDeltaWeight());
@@ -171,11 +169,11 @@ public class NeuralNetwork {
                     double wjk = outputN.getConnection(n.id).getWeight();
                     double dy = expectedOutput[j];
                     double yk = outputN.getOutput();
-                    sumOutputs += (-(dy - yk) * yk * (1 - yk) * wjk);
+                    sumOutputs += (dy - yk) * yk * (1 - yk) * wjk;
                     j++;
                 }
-                double partialDerivative = y * (1 - y) * sumOutputs * pervY;
-                double deltaWeight = -learningRate * partialDerivative;
+                double partialDerivative = y * (1 - y) * sumOutputs;
+                double deltaWeight = learningRate * partialDerivative * pervY;
                 double newWeight = con.getWeight() + deltaWeight;
                 con.setDeltaWeight(deltaWeight);
                 con.setWeight(newWeight + momentum * con.getPrevDeltaWeight());
