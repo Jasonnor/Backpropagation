@@ -328,16 +328,19 @@ public class MainFrame {
             }
             initialData();
             ArrayList<String> header = new ArrayList<>();
-            header.add("w");
             for (int i = 1; i < trainData.get(0).length - 1; i++)
                 header.add("x" + i);
             header.add("yd");
             trainTableModel.setColumnIdentifiers(header.toArray());
             testTableModel.setColumnIdentifiers(header.toArray());
-            for (Double[] x : trainData)
+            for (Double[] x : trainData) {
+                x = Arrays.copyOfRange(x, 1, x.length);
                 trainTableModel.addRow(x);
-            for (Double[] x : testData)
+            }
+            for (Double[] x : testData) {
+                x = Arrays.copyOfRange(x, 1, x.length);
                 testTableModel.addRow(x);
+            }
             trainTable.setModel(trainTableModel);
             testTable.setModel(testTableModel);
             // TODO - show y result at data table

@@ -160,12 +160,7 @@ public class NeuralNetwork {
                 applyBackpropagation(expectedOutput);
             }
         }
-        System.out.println("Sum of squared errors = " + error);
-        if (i == maxSteps) {
-            System.out.println("Max steps!");
-        } else {
-            printAllWeights();
-        }
+        printAllWeights();
         // result = runTimes + MSE + trainRate
         return String.valueOf(i) + " " + error + " " + (double) correct / inputs.size() * 100 + "%";
     }
