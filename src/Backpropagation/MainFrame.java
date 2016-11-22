@@ -35,10 +35,8 @@ public class MainFrame {
     private JTextField thresholdTextField;
     private JLabel trainingValue;
     private JLabel testingValue;
-    private JLabel weightsValue;
     private JSlider zoomerSlider;
     private JLabel timesValue;
-    private JLabel fThresholdValue;
     private JTextField maxTimesValue;
     private JTextField wRangeMinValue;
     private JTextField wRangeMaxValue;
@@ -47,6 +45,7 @@ public class MainFrame {
     private JTable trainTable;
     private JTable testTable;
     private JTextField minErrorTextField;
+    private JLabel MSEValue;
     private DefaultTableModel trainTableModel = new DefaultTableModel();
     private DefaultTableModel testTableModel = new DefaultTableModel();
     private DecimalFormat df = new DecimalFormat("####0.00");
@@ -393,7 +392,10 @@ public class MainFrame {
     private void startTrain() {
         network = new NeuralNetwork(trainData, hidden, momentum, learningRate,
                 threshold, minRange, maxRange);
-        network.run(maxTimes, minError);
+        String[] result = network.run(maxTimes, minError).split(" ");
+        timesValue.setText(result[0]);
+        MSEValue.setText(result[1]);
+        //trainingValue.setText((double) correct / trainData.size() * 100 + "%");
     }
 
     private void trainBackpropagation(Double dy) {
@@ -431,8 +433,6 @@ public class MainFrame {
         }
         weightOutput.append(")");
         timesValue.setText(String.valueOf(times));
-        weightsValue.setText(weightOutput.toString());
-        fThresholdValue.setText(weights.get(wi)[0].toString());
         trainingValue.setText((double) correct / trainData.size() * 100 + "%");
         testBackpropagation(dy);
     }

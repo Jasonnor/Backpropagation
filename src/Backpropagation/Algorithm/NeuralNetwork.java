@@ -5,23 +5,20 @@ import java.util.*;
 
 public class NeuralNetwork {
 
-    private final DecimalFormat df;
     private final Random rand = new Random();
     private final ArrayList<Neuron> inputLayer = new ArrayList<>();
     private final ArrayList<Neuron> hiddenLayer = new ArrayList<>();
     private final ArrayList<Neuron> outputLayer = new ArrayList<>();
-    private final int[] layers;
 
     private double momentum;
     private double learningRate;
 
     private ArrayList<Double[]> inputs = new ArrayList<>();
-    private ArrayList<Double[]> resultOutputs = new ArrayList<>();
 
     public NeuralNetwork(ArrayList<Double[]> inputs, int hidden, double momentum, double learningRate,
                          double threshold, double minRange, double maxRange) {
         this.inputs = inputs;
-        this.layers = new int[]{inputs.get(0).length - 1, hidden, 1};
+        int[] layers = new int[]{inputs.get(0).length - 1, hidden, 1};
         this.momentum = momentum;
         this.learningRate = learningRate;
         df = new DecimalFormat("#.0#");
@@ -132,18 +129,16 @@ public class NeuralNetwork {
         }
     }
 
-    public void run(int maxSteps, double minError) {
+    public String run(int maxSteps, double minError) {
         int i;
         // Train neural network until minError reached or maxSteps exceeded
         double error = 1;
         for (i = 0; i < maxSteps && error > minError; i++) {
             error = 0;
-            for (int p = 0; p < inputs.size(); p++) {
-                Double[] input = inputs.get(p);
+            for (Double[] input : inputs) {
                 setInput(input);
                 activate();
                 Double[] output = getOutput();
-                resultOutputs.add(output);
                 Double[] expectedOutput = new Double[]{input[input.length - 1]};
                 for (int j = 0; j < expectedOutput.length; j++) {
                     double err = Math.pow(expectedOutput[j] - output[j], 2);
@@ -153,39 +148,14 @@ public class NeuralNetwork {
             }
             error /= 2;
         }
-
-        printResult();
-
         System.out.println("Sum of squared errors = " + error);
         if (i == maxSteps) {
             System.out.println("Max steps!");
         } else {
             printAllWeights();
         }
-    }
-
-    private void printResult() {
-        System.out.println("NN example with xor training");
-        for (int p = 0; p < inputs.size(); p++) {
-            System.out.print("INPUTS: ");
-            for (int x = 0; x < layers[0]; x++) {
-                System.out.print(inputs.get(p)[x] + " ");
-            }
-
-            Double[] input = inputs.get(p);
-            Double[] expectedOutput = new Double[]{input[input.length - 1]};
-            System.out.print("EXPECTED: ");
-            for (int x = 0; x < layers[2]; x++) {
-                System.out.print(expectedOutput[x] + " ");
-            }
-
-            System.out.print("ACTUAL: ");
-            for (int x = 0; x < layers[2]; x++) {
-                System.out.print(resultOutputs.get(p)[x] + " ");
-            }
-            System.out.println();
-        }
-        System.out.println();
+        // result = runTimes + MSE +
+        return String.valueOf(i) + " " + error;
     }
 
     private void printAllWeights() {
