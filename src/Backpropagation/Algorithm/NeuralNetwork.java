@@ -1,6 +1,5 @@
 package Backpropagation.Algorithm;
 
-import java.text.*;
 import java.util.*;
 
 public class NeuralNetwork {
@@ -14,14 +13,15 @@ public class NeuralNetwork {
     private double learningRate;
 
     private ArrayList<Double[]> inputs = new ArrayList<>();
+    private ArrayList<Double> outputKinds = new ArrayList<>();
 
-    public NeuralNetwork(ArrayList<Double[]> inputs, int hidden, double momentum, double learningRate,
-                         double threshold, double minRange, double maxRange) {
+    public NeuralNetwork(ArrayList<Double[]> inputs, ArrayList<Double> outputKinds, int hidden, double momentum,
+                         double learningRate, double threshold, double minRange, double maxRange) {
         this.inputs = inputs;
+        this.outputKinds = outputKinds;
         int[] layers = new int[]{inputs.get(0).length - 1, hidden, 1};
         this.momentum = momentum;
         this.learningRate = learningRate;
-        df = new DecimalFormat("#.0#");
         for (int i = 0; i < layers.length; i++) {
             if (i == 0) { // input layer
                 for (int j = 0; j < layers[i]; j++) {
@@ -133,20 +133,32 @@ public class NeuralNetwork {
         int i;
         // Train neural network until minError reached or maxSteps exceeded
         double error = 1;
+        int correct = 0;
         for (i = 0; i < maxSteps && error > minError; i++) {
             error = 0;
+            correct = 0;
             for (Double[] input : inputs) {
                 setInput(input);
                 activate();
                 Double[] output = getOutput();
                 Double[] expectedOutput = new Double[]{input[input.length - 1]};
                 for (int j = 0; j < expectedOutput.length; j++) {
-                    double err = Math.pow(expectedOutput[j] - output[j], 2);
+                    double err = Math.pow(expectedOutput[j] - output[j], 2) / 2;
                     error += err;
                 }
+                double distance = Math.abs(outputKinds.get(0) - output[0]);
+                int idx = 0;
+                for (int j = 1; j < outputKinds.size(); j++) {
+                    double newDistance = Math.abs(outputKinds.get(j) - output[0]);
+                    if (newDistance < distance) {
+                        idx = j;
+                        distance = newDistance;
+                    }
+                }
+                double y = outputKinds.get(idx);
+                if (y == expectedOutput[0]) ++correct;
                 applyBackpropagation(expectedOutput);
             }
-            error /= 2;
         }
         System.out.println("Sum of squared errors = " + error);
         if (i == maxSteps) {
@@ -154,8 +166,41 @@ public class NeuralNetwork {
         } else {
             printAllWeights();
         }
-        // result = runTimes + MSE +
-        return String.valueOf(i) + " " + error;
+        // result = runTimes + MSE + trainRate
+        return String.valueOf(i) + " " + error + " " + (double) correct / inputs.size() * 100 + "%";
+    }
+
+    public String test(ArrayList<Double[]> inputs, int maxSteps, double minError) {
+        int i;
+        double error = 1;
+        int correct = 0;
+        for (i = 0; i < maxSteps && error > minError; i++) {
+            error = 0;
+            correct = 0;
+            for (Double[] input : inputs) {
+                setInput(input);
+                activate();
+                Double[] output = getOutput();
+                Double[] expectedOutput = new Double[]{input[input.length - 1]};
+                for (int j = 0; j < expectedOutput.length; j++) {
+                    double err = Math.pow(expectedOutput[j] - output[j], 2) / 2;
+                    error += err;
+                }
+                double distance = Math.abs(outputKinds.get(0) - output[0]);
+                int idx = 0;
+                for (int j = 1; j < outputKinds.size(); j++) {
+                    double newDistance = Math.abs(outputKinds.get(j) - output[0]);
+                    if (newDistance < distance) {
+                        idx = j;
+                        distance = newDistance;
+                    }
+                }
+                double y = outputKinds.get(idx);
+                if (y == expectedOutput[0]) ++correct;
+            }
+        }
+        // result = runTimes + MSE + trainRate
+        return (double) correct / inputs.size() * 100 + "%";
     }
 
     private void printAllWeights() {

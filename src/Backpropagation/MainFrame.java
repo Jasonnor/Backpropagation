@@ -390,12 +390,14 @@ public class MainFrame {
     }
 
     private void startTrain() {
-        network = new NeuralNetwork(trainData, hidden, momentum, learningRate,
-                threshold, minRange, maxRange);
-        String[] result = network.run(maxTimes, minError).split(" ");
-        timesValue.setText(result[0]);
-        MSEValue.setText(result[1]);
-        //trainingValue.setText((double) correct / trainData.size() * 100 + "%");
+        network = new NeuralNetwork(trainData, outputKinds, hidden, momentum,
+                learningRate, threshold, minRange, maxRange);
+        String[] resultTrain = network.run(maxTimes, minError).split(" ");
+        timesValue.setText(resultTrain[0]);
+        MSEValue.setText(resultTrain[1]);
+        trainingValue.setText(resultTrain[2]);
+        String resultTest = network.test(testData, maxTimes, minError);
+        testingValue.setText(resultTest);
     }
 
     private void trainBackpropagation(Double dy) {
