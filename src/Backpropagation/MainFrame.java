@@ -50,7 +50,6 @@ public class MainFrame {
     private DefaultTableModel testTableModel = new DefaultTableModel();
     private DecimalFormat df = new DecimalFormat("####0.00");
     private Color[] colorArray = {Color.BLUE, Color.RED, Color.GREEN, Color.YELLOW, Color.CYAN, Color.PINK};
-    private NeuralNetwork network;
     private ArrayList<Double[]> inputs = new ArrayList<>();
     private ArrayList<Double[]> trainData = new ArrayList<>();
     private ArrayList<Double[]> testData = new ArrayList<>();
@@ -390,7 +389,7 @@ public class MainFrame {
     }
 
     private void startTrain() {
-        network = new NeuralNetwork(trainData, outputKinds, hidden, momentum,
+        NeuralNetwork network = new NeuralNetwork(trainData, outputKinds, hidden, momentum,
                 learningRate, threshold, minRange, maxRange);
         String[] resultTrain = network.run(maxTimes, minError).split(" ");
         timesValue.setText(resultTrain[0]);
@@ -398,62 +397,6 @@ public class MainFrame {
         trainingValue.setText(resultTrain[2]);
         String resultTest = network.test(testData, maxTimes, minError);
         testingValue.setText(resultTest);
-    }
-
-    private void trainBackpropagation(Double dy) {
-        if (trainData.size() == 0) return;
-        Double[] w = new Double[trainData.get(0).length - 1];
-        w[0] = threshold;
-        for (int i = 1; i < trainData.get(0).length - 1; i++)
-            w[i] = getRandomNumber();
-        int wi = outputKinds.indexOf(dy);
-        if (wi == 0) weights.clear();
-        weights.add(w);
-        int times = 0, correct = 0;
-        while (times < maxTimes) {
-            correct = 0;
-            for (Double[] x : trainData) {
-                Double sum = 0.0;
-                for (int i = 0; i < weights.get(wi).length; i++) {
-                    sum += weights.get(wi)[i] * x[i];
-                }
-                Double fx = Math.signum(sum);
-                Double y = (x[x.length - 1].equals(dy)) ? 1.0 : -1.0;
-                Double e = y - fx;
-                if (e == 0) ++correct;
-                for (int i = 0; i < weights.get(wi).length; i++) {
-                    weights.get(wi)[i] = weights.get(wi)[i] + learningRate * e * x[i];
-                }
-            }
-            if (correct == trainData.size()) break;
-            ++times;
-        }
-        StringBuilder weightOutput = new StringBuilder("(");
-        weightOutput.append(df.format(weights.get(wi)[1]));
-        for (int i = 2; i < weights.get(wi).length; i++) {
-            weightOutput.append(", ").append(df.format(weights.get(wi)[i]));
-        }
-        weightOutput.append(")");
-        timesValue.setText(String.valueOf(times));
-        trainingValue.setText((double) correct / trainData.size() * 100 + "%");
-        testBackpropagation(dy);
-    }
-
-    private void testBackpropagation(Double dy) {
-        if (testData.size() == 0) return;
-        int wi = outputKinds.indexOf(dy);
-        int correct = 0;
-        for (Double[] x : testData) {
-            Double sum = 0.0;
-            for (int i = 0; i < weights.get(wi).length; i++) {
-                sum += weights.get(wi)[i] * x[i];
-            }
-            Double fx = Math.signum(sum);
-            Double y = (x[x.length - 1].equals(dy)) ? 1.0 : -1.0;
-            Double e = y - fx;
-            if (e == 0) ++correct;
-        }
-        testingValue.setText((double) correct / testData.size() * 100 + "%");
         coordinatePanel.repaint();
     }
 
@@ -466,11 +409,6 @@ public class MainFrame {
 
     private Double normalize(Double input, Double min, Double max) {
         return round((input - min) / (max - min), 4);
-    }
-
-    private Double getRandomNumber() {
-        Random r = new Random();
-        return minRange + (maxRange - minRange) * r.nextDouble();
     }
 
     private Double[] convertCoordinate(Double[] oldPoint) {
@@ -611,7 +549,7 @@ public class MainFrame {
                 }
             }
             g2.setStroke(new BasicStroke(2));
-            // Draw line of MainFrame
+            // Draw line of decision boundary
             if (weights.size() != 0 && inputs.get(0).length == 4) {
                 g2.setColor(Color.MAGENTA);
                 for (Double[] weight : weights) {
