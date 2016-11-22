@@ -1,5 +1,7 @@
 package Backpropagation;
 
+import Backpropagation.Algorithm.NeuralNetwork;
+
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -43,7 +45,8 @@ public class MainFrame {
     private DefaultTableModel testTableModel = new DefaultTableModel();
     private DecimalFormat df = new DecimalFormat("####0.00");
     private Color[] colorArray = {Color.GREEN, Color.BLUE, Color.RED, Color.YELLOW, Color.CYAN, Color.PINK};
-    private ArrayList<Double[]> input = new ArrayList<>();
+    private NeuralNetwork network;
+    private ArrayList<Double[]> inputs = new ArrayList<>();
     private ArrayList<Double[]> trainData = new ArrayList<>();
     private ArrayList<Double[]> testData = new ArrayList<>();
     private ArrayList<Double[]> weights = new ArrayList<>();
@@ -238,7 +241,7 @@ public class MainFrame {
                 numbers[0] = -1.0;
                 for (int i = 1; i <= lineSplit.length; i++)
                     numbers[i] = Double.parseDouble(lineSplit[i - 1]);
-                input.add(numbers);
+                inputs.add(numbers);
                 Double output = numbers[numbers.length - 1];
                 if (!outputKinds.contains(output))
                     outputKinds.add(output);
@@ -267,7 +270,7 @@ public class MainFrame {
     }
 
     private void resetData() {
-        input.clear();
+        inputs.clear();
         trainData.clear();
         testData.clear();
         outputKinds.clear();
@@ -280,7 +283,7 @@ public class MainFrame {
     private void initialData() {
         int[] trainKindTimes = new int[outputKinds.size()];
         int[] testKindTimes = new int[outputKinds.size()];
-        for (Double[] x : input) {
+        for (Double[] x : inputs) {
             Double output = x[x.length - 1];
             int i;
             for (i = 0; i < outputKinds.size(); i++)
@@ -297,10 +300,15 @@ public class MainFrame {
     }
 
     private void startTrain() {
-        if (outputKinds.size() > 2)
+        network = new NeuralNetwork(inputs, 3, 4, 1);
+        int maxRuns = 50000;
+        double minErrorCondition = 0.001;
+        network.run(maxRuns, minErrorCondition);
+
+        /*if (outputKinds.size() > 2)
             outputKinds.forEach(this::trainBackpropagation);
         else
-            trainBackpropagation(outputKinds.get(0));
+            trainBackpropagation(outputKinds.get(0));*/
     }
 
     private void trainBackpropagation(Double dy) {
@@ -491,8 +499,8 @@ public class MainFrame {
                 g2.drawString("(" + df.format(mouse_x) + ", " + df.format(mouse_y) + ")", 420, 20);
             }
             // Draw point of file
-            if (input.size() > 0 && input.get(0).length == 4) {
-                for (Double[] x : input) {
+            if (inputs.size() > 0 && inputs.get(0).length == 4) {
+                for (Double[] x : inputs) {
                     Double[] point = convertCoordinate(new Double[]{x[1], x[2]});
                     g2.setColor(colorArray[(int) Math.round(x[x.length - 1])]);
                     g2.draw(new Line2D.Double(point[0], point[1], point[0], point[1]));
@@ -500,7 +508,7 @@ public class MainFrame {
             }
             g2.setStroke(new BasicStroke(2));
             // Draw line of MainFrame
-            if (weights.size() != 0 && input.get(0).length == 4) {
+            if (weights.size() != 0 && inputs.get(0).length == 4) {
                 g2.setColor(Color.MAGENTA);
                 for (Double[] weight : weights) {
                     Double[] lineStart, lineEnd;

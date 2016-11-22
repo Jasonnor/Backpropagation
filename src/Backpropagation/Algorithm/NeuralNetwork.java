@@ -20,10 +20,7 @@ public class NeuralNetwork {
     final double learningRate = 0.9f;
     final double momentum = 0.7f;
 
-    // Inputs for xor problem
-    final double inputs[][] = {{0, 0.4, 1}, {1, 0, 1}, {0, 0, 1}, {1, 1, 1}, {0, 1, 1}};
-
-    // Corresponding outputs, xor training data
+    private ArrayList<Double[]> inputs = new ArrayList<>();
     final double expectedOutputs[][] = {{0.4}, {1}, {0}, {1}, {1}};
     double resultOutputs[][] = {{-1}, {-1}, {-1}, {-1}, {-1}}; // dummy init
     double output[];
@@ -31,14 +28,8 @@ public class NeuralNetwork {
     // for weight update all
     final HashMap<String, Double> weightUpdate = new HashMap<>();
 
-    public static void main(String[] args) {
-        NeuralNetwork nn = new NeuralNetwork(3, 4, 1);
-        int maxRuns = 50000;
-        double minErrorCondition = 0.001;
-        nn.run(maxRuns, minErrorCondition);
-    }
-
-    public NeuralNetwork(int input, int hidden, int output) {
+    public NeuralNetwork(ArrayList<Double[]> inputs, int input, int hidden, int output) {
+        this.inputs = inputs;
         this.layers = new int[]{input, hidden, output};
         df = new DecimalFormat("#.0#");
         for (int i = 0; i < layers.length; i++) {
@@ -100,7 +91,7 @@ public class NeuralNetwork {
      * @param inputs There is equally many neurons in the input layer as there are
      *               in input variables
      */
-    public void setInput(double inputs[]) {
+    public void setInput(Double inputs[]) {
         for (int i = 0; i < inputLayer.size(); i++) {
             inputLayer.get(i).setOutput(inputs[i]);
         }
@@ -181,14 +172,14 @@ public class NeuralNetwork {
         }
     }
 
-    void run(int maxSteps, double minError) {
+    public void run(int maxSteps, double minError) {
         int i;
         // Train neural network until minError reached or maxSteps exceeded
         double error = 1;
         for (i = 0; i < maxSteps && error > minError; i++) {
             error = 0;
-            for (int p = 0; p < inputs.length; p++) {
-                setInput(inputs[p]);
+            for (int p = 0; p < inputs.size(); p++) {
+                setInput(inputs.get(p));
                 activate();
                 output = getOutput();
                 resultOutputs[p] = output;
@@ -213,10 +204,10 @@ public class NeuralNetwork {
 
     void printResult() {
         System.out.println("NN example with xor training");
-        for (int p = 0; p < inputs.length; p++) {
+        for (int p = 0; p < inputs.size(); p++) {
             System.out.print("INPUTS: ");
             for (int x = 0; x < layers[0]; x++) {
-                System.out.print(inputs[p][x] + " ");
+                System.out.print(inputs.get(p)[x] + " ");
             }
 
             System.out.print("EXPECTED: ");
