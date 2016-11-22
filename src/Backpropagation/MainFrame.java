@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.Line2D;
+import java.awt.geom.Rectangle2D;
 import java.io.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -17,7 +18,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Random;
 
 import static javax.swing.border.TitledBorder.CENTER;
 import static javax.swing.border.TitledBorder.DEFAULT_POSITION;
@@ -46,10 +46,12 @@ public class MainFrame {
     private JTable testTable;
     private JTextField minErrorTextField;
     private JLabel MSEValue;
+    private JTextField sizeTextField;
     private DefaultTableModel trainTableModel = new DefaultTableModel();
     private DefaultTableModel testTableModel = new DefaultTableModel();
     private DecimalFormat df = new DecimalFormat("####0.00");
     private Color[] colorArray = {Color.BLUE, Color.RED, Color.GREEN, Color.YELLOW, Color.CYAN, Color.PINK};
+    private NeuralNetwork network;
     private ArrayList<Double[]> inputs = new ArrayList<>();
     private ArrayList<Double[]> trainData = new ArrayList<>();
     private ArrayList<Double[]> testData = new ArrayList<>();
@@ -65,6 +67,7 @@ public class MainFrame {
     private double minRange = -0.5;
     private double maxRange = 0.5;
     private double minError = 0.01;
+    private double size = -1.0;
 
     private MainFrame() {
         loadButton.addActionListener(e -> {
@@ -300,6 +303,30 @@ public class MainFrame {
                 }
             }
         });
+        sizeTextField.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                changeSize();
+            }
+
+            public void removeUpdate(DocumentEvent e) {
+                changeSize();
+            }
+
+            public void insertUpdate(DocumentEvent e) {
+                changeSize();
+            }
+
+            void changeSize() {
+                try {
+                    alertBackground(sizeTextField, false);
+                    size = Double.valueOf(sizeTextField.getText());
+                    startTrain();
+                } catch (NumberFormatException e) {
+                    alertBackground(sizeTextField, true);
+                    size = -1.0;
+                }
+            }
+        });
     }
 
     private void loadFile(JFileChooser fileChooser) {
@@ -392,7 +419,7 @@ public class MainFrame {
     }
 
     private void startTrain() {
-        NeuralNetwork network = new NeuralNetwork(trainData, outputKinds, hidden, momentum,
+        network = new NeuralNetwork(trainData, outputKinds, hidden, momentum,
                 learningRate, threshold, minRange, maxRange);
         String[] resultTrain = network.run(maxTimes, minError).split(" ");
         timesValue.setText(resultTrain[0]);
@@ -506,7 +533,7 @@ public class MainFrame {
         skinsNimbusMenuItem.addActionListener(e -> changeLAF("Nimbus"));
         menuBar.add(skinsMenu);
         // Main frame
-        frame = new JFrame("MainFrame");
+        frame = new JFrame("Backpropagation");
         frame.setContentPane(new MainFrame().layoutPanel);
         frame.setIconImage(Toolkit.getDefaultToolkit().getImage("icon.png"));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -520,9 +547,23 @@ public class MainFrame {
         @Override
         public void paintComponent(Graphics g) {
             super.paintComponent(g);
+            Graphics2D g2 = (Graphics2D) g;
+            // Draw output kind area
+            if (size > 0 && inputs.size() > 0 && inputs.get(0).length == 4) {
+                for (Double x = -250.0; x <= 250; x += size) {
+                    for (Double y = -250.0; y <= 250; y += size) {
+                        int id = network.getOutputKind(new Double[]{-1.0, x / magnification, y / magnification}, maxTimes, minError);
+                        g2.setColor(colorArray[colorArray.length - id - 1]);
+                        Double[] point = convertCoordinate(new Double[]{x / magnification, y / magnification});
+                        Rectangle2D rect = new Rectangle2D.Double(point[0], point[1], size, size);
+                        g2.fill(rect);
+                    }
+                }
+            }
+            g.setColor(Color.black);
             g.drawLine(250, 0, 250, 500);
             g.drawLine(0, 250, 500, 250);
-            Graphics2D g2 = (Graphics2D) g;
+            g2.setColor(Color.black);
             // Draw scale
             for (Double i = 250.0; i >= 0; i -= 5.0 * magnification / 10) {
                 drawScale(g2, i);
