@@ -5,15 +5,15 @@ import java.util.*;
 
 public class NeuralNetwork {
 
-    final boolean isTrained = false;
-    final DecimalFormat df;
-    final Random rand = new Random();
-    final ArrayList<Neuron> inputLayer = new ArrayList<>();
-    final ArrayList<Neuron> hiddenLayer = new ArrayList<>();
-    final ArrayList<Neuron> outputLayer = new ArrayList<>();
-    final Neuron threshold = new Neuron();
-    final int[] layers;
-    final int randomWeightMultiplier = 1;
+    private final boolean isTrained = false;
+    private final DecimalFormat df;
+    private final Random rand = new Random();
+    private final ArrayList<Neuron> inputLayer = new ArrayList<>();
+    private final ArrayList<Neuron> hiddenLayer = new ArrayList<>();
+    private final ArrayList<Neuron> outputLayer = new ArrayList<>();
+    private final Neuron threshold = new Neuron();
+    private final int[] layers;
+    private final int randomWeightMultiplier = 1;
 
     final double epsilon = 0.00000000001;
 
@@ -21,16 +21,14 @@ public class NeuralNetwork {
     final double momentum = 0.7f;
 
     private ArrayList<Double[]> inputs = new ArrayList<>();
-    final double expectedOutputs[][] = {{0.4}, {1}, {0}, {1}, {1}};
-    double resultOutputs[][] = {{-1}, {-1}, {-1}, {-1}, {-1}}; // dummy init
-    double output[];
+    private ArrayList<Double[]> resultOutputs = new ArrayList<>();
 
     // for weight update all
-    final HashMap<String, Double> weightUpdate = new HashMap<>();
+    private final HashMap<String, Double> weightUpdate = new HashMap<>();
 
-    public NeuralNetwork(ArrayList<Double[]> inputs, int input, int hidden, int output) {
+    public NeuralNetwork(ArrayList<Double[]> inputs, int hidden) {
         this.inputs = inputs;
-        this.layers = new int[]{input, hidden, output};
+        this.layers = new int[]{inputs.get(0).length - 1, hidden, 1};
         df = new DecimalFormat("#.0#");
         for (int i = 0; i < layers.length; i++) {
             if (i == 0) { // input layer
@@ -82,33 +80,24 @@ public class NeuralNetwork {
         }
     }
 
-    // random
-    double getRandom() {
+    private double getRandom() {
         return randomWeightMultiplier * (rand.nextDouble() * 2 - 1); // [-1;1[
     }
 
-    /**
-     * @param inputs There is equally many neurons in the input layer as there are
-     *               in input variables
-     */
-    public void setInput(Double inputs[]) {
+    private void setInput(Double inputs[]) {
         for (int i = 0; i < inputLayer.size(); i++) {
             inputLayer.get(i).setOutput(inputs[i]);
         }
     }
 
-    public double[] getOutput() {
-        double[] outputs = new double[outputLayer.size()];
+    private Double[] getOutput() {
+        Double[] outputs = new Double[outputLayer.size()];
         for (int i = 0; i < outputLayer.size(); i++)
             outputs[i] = outputLayer.get(i).getOutput();
         return outputs;
     }
 
-    /**
-     * Calculate the output of the neural network based on the input The forward
-     * operation
-     */
-    public void activate() {
+    private void activate() {
         hiddenLayer.forEach(Neuron::calculateOutput);
         outputLayer.forEach(Neuron::calculateOutput);
     }
@@ -120,7 +109,7 @@ public class NeuralNetwork {
      *                       respect to each of the weight leading into the output neurons
      *                       threshold is also updated here
      */
-    public void applyBackpropagation(double expectedOutput[]) {
+    private void applyBackpropagation(Double expectedOutput[]) {
 
         // error check, normalize value ]0;1[
         for (int i = 0; i < expectedOutput.length; i++) {
@@ -179,15 +168,17 @@ public class NeuralNetwork {
         for (i = 0; i < maxSteps && error > minError; i++) {
             error = 0;
             for (int p = 0; p < inputs.size(); p++) {
-                setInput(inputs.get(p));
+                Double[] input = inputs.get(p);
+                setInput(input);
                 activate();
-                output = getOutput();
-                resultOutputs[p] = output;
-                for (int j = 0; j < expectedOutputs[p].length; j++) {
-                    double err = Math.pow(output[j] - expectedOutputs[p][j], 2);
+                Double[] output = getOutput();
+                resultOutputs.add(output);
+                Double[] expectedOutput = new Double[]{input[input.length - 1]};
+                for (int j = 0; j < expectedOutput.length; j++) {
+                    double err = Math.pow(output[j] - expectedOutput[j], 2);
                     error += err;
                 }
-                applyBackpropagation(expectedOutputs[p]);
+                applyBackpropagation(expectedOutput);
             }
         }
 
@@ -210,14 +201,16 @@ public class NeuralNetwork {
                 System.out.print(inputs.get(p)[x] + " ");
             }
 
+            Double[] input = inputs.get(p);
+            Double[] expectedOutput = new Double[]{input[input.length - 1]};
             System.out.print("EXPECTED: ");
             for (int x = 0; x < layers[2]; x++) {
-                System.out.print(expectedOutputs[p][x] + " ");
+                System.out.print(expectedOutput[x] + " ");
             }
 
             System.out.print("ACTUAL: ");
             for (int x = 0; x < layers[2]; x++) {
-                System.out.print(resultOutputs[p][x] + " ");
+                System.out.print(resultOutputs.get(p)[x] + " ");
             }
             System.out.println();
         }

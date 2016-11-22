@@ -300,9 +300,9 @@ public class MainFrame {
     }
 
     private void startTrain() {
-        network = new NeuralNetwork(inputs, 3, 4, 1);
-        int maxRuns = 50000;
-        double minErrorCondition = 0.001;
+        network = new NeuralNetwork(inputs, 4);
+        int maxRuns = 1000;
+        double minErrorCondition = 0.01;
         network.run(maxRuns, minErrorCondition);
 
         /*if (outputKinds.size() > 2)
