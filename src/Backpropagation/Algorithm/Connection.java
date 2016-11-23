@@ -2,6 +2,7 @@ package Backpropagation.Algorithm;
 
 class Connection {
     private double weight = 0;
+    private double bestWeight = 0;
     private double prevDeltaWeight = 0; // for momentum
     private double deltaWeight = 0;
 
@@ -21,6 +22,14 @@ class Connection {
 
     void setWeight(double w) {
         weight = w;
+    }
+
+    void setBestWeight(double w) {
+        bestWeight = w;
+    }
+
+    void setWeightAsBest() {
+        weight = bestWeight;
     }
 
     void setDeltaWeight(double w) {

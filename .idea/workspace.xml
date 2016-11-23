@@ -34,27 +34,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainFrame.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainFrame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Backpropagation/MainFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="566">
-              <caret line="135" column="19" selection-start-line="135" selection-start-column="19" selection-end-line="135" selection-end-column="19" />
+            <state relative-caret-position="1996">
+              <caret line="412" column="31" selection-start-line="412" selection-start-column="31" selection-end-line="412" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#changeMomentum#0;class#5412:6171" expanded="false" />
-                <element signature="class#6238:6990" expanded="false" />
-                <element signature="method#changeRate#0;class#6238:6990" expanded="false" />
-                <element signature="class#7058:7824" expanded="false" />
-                <element signature="method#changeThreshold#0;class#7058:7824" expanded="false" />
-                <element signature="class#7887:8636" expanded="false" />
-                <element signature="method#changeMaxTimes#0;class#7887:8636" expanded="false" />
-                <element signature="class#8703:9463" expanded="false" />
-                <element signature="method#changeMinError#0;class#8703:9463" expanded="false" />
-                <element signature="class#9527:10480" expanded="false" />
-                <element signature="method#changeMinRange#0;class#9527:10480" expanded="false" />
-                <element signature="class#10544:11496" expanded="false" />
-                <element signature="method#changeMaxRange#0;class#10544:11496" expanded="false" />
-                <element signature="class#11559:12283" expanded="false" />
+                <element signature="class#4526:4966" expanded="false" />
+                <element signature="e#4889#4890#0" expanded="true" />
+                <element signature="e#4955#4956#0" expanded="true" />
+                <element signature="class#5033:5758" expanded="false" />
+                <element signature="method#changeMomentum#0;class#5033:5758" expanded="false" />
+                <element signature="method#changeRate#0;class#5825:6543" expanded="false" />
+                <element signature="class#6611:7343" expanded="false" />
+                <element signature="method#changeThreshold#0;class#6611:7343" expanded="false" />
+                <element signature="class#7406:8121" expanded="false" />
+                <element signature="method#changeMaxTimes#0;class#7406:8121" expanded="false" />
+                <element signature="class#8188:8914" expanded="false" />
+                <element signature="method#changeMinError#0;class#8188:8914" expanded="false" />
+                <element signature="class#8978:9893" expanded="false" />
+                <element signature="method#changeMinRange#0;class#8978:9893" expanded="false" />
+                <element signature="class#9957:10871" expanded="false" />
+                <element signature="method#changeMaxRange#0;class#9957:10871" expanded="false" />
+                <element signature="class#10934:11624" expanded="false" />
                 <element signature="method#loadFile#0;class#MainFrame#0" expanded="false" />
                 <element signature="method#initialData#0;class#MainFrame#0" expanded="false" />
                 <element signature="method#round#0;class#MainFrame#0" expanded="false" />
@@ -69,13 +72,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NeuralNetwork.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="NeuralNetwork.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Backpropagation/Algorithm/NeuralNetwork.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="126" column="46" selection-start-line="126" selection-start-column="46" selection-end-line="126" selection-end-column="46" />
+            <state relative-caret-position="355">
+              <caret line="171" column="32" selection-start-line="171" selection-start-column="32" selection-end-line="171" selection-end-column="32" />
               <folding>
+                <element signature="method#NeuralNetwork#0;class#NeuralNetwork#0" expanded="false" />
+                <element signature="method#getRandomNumber#0;class#NeuralNetwork#0" expanded="false" />
+                <element signature="method#setInput#0;class#NeuralNetwork#0" expanded="false" />
                 <element signature="method#getOutput#0;class#NeuralNetwork#0" expanded="false" />
+                <element signature="method#applyBackpropagation#0;class#NeuralNetwork#0" expanded="false" />
+                <element signature="method#test#0;class#NeuralNetwork#0" expanded="false" />
+                <element signature="method#getOutputKind#0;class#NeuralNetwork#0" expanded="false" />
+                <element signature="method#printAllWeights#0;class#NeuralNetwork#0" expanded="false" />
+                <element signature="method#printWeights#0;class#NeuralNetwork#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -84,8 +95,8 @@
       <file leaf-file-name="Neuron.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Backpropagation/Algorithm/Neuron.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state relative-caret-position="806">
+              <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -94,9 +105,18 @@
       <file leaf-file-name="Connection.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Backpropagation/Algorithm/Connection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
-              <folding />
+            <state relative-caret-position="279">
+              <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+              <folding>
+                <element signature="e#451#452#0" expanded="true" />
+                <element signature="e#480#481#0" expanded="true" />
+                <element signature="e#512#513#0" expanded="true" />
+                <element signature="e#538#539#0" expanded="true" />
+                <element signature="e#574#575#0" expanded="true" />
+                <element signature="e#604#605#0" expanded="true" />
+                <element signature="e#634#635#0" expanded="true" />
+                <element signature="e#669#670#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -136,11 +156,11 @@
         <option value="$PROJECT_DIR$/src/Backpropagation/MainUtil.java" />
         <option value="$PROJECT_DIR$/src/Backpropagation/Util/MutableDouble.java" />
         <option value="$PROJECT_DIR$/src/Backpropagation/Util/MainUtil.java" />
-        <option value="$PROJECT_DIR$/src/Backpropagation/Algorithm/Connection.java" />
         <option value="$PROJECT_DIR$/src/Backpropagation/Algorithm/Neuron.java" />
-        <option value="$PROJECT_DIR$/src/Backpropagation/Algorithm/NeuralNetwork.java" />
         <option value="$PROJECT_DIR$/src/Backpropagation/MainFrame.form" />
         <option value="$PROJECT_DIR$/src/Backpropagation/MainFrame.java" />
+        <option value="$PROJECT_DIR$/src/Backpropagation/Algorithm/NeuralNetwork.java" />
+        <option value="$PROJECT_DIR$/src/Backpropagation/Algorithm/Connection.java" />
       </list>
     </option>
   </component>
@@ -790,12 +810,12 @@
       <workItem from="1479640152124" duration="11972000" />
       <workItem from="1479736845111" duration="10245000" />
       <workItem from="1479782786972" duration="40030000" />
-      <workItem from="1479878388294" duration="6075000" />
+      <workItem from="1479878388294" duration="10062000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171574000" />
+    <option name="totallyTimeSpent" value="175561000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -808,7 +828,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1442623" sideWeight="0.50476193" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23825137" sideWeight="0.4952381" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23825137" sideWeight="0.4952381" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -872,7 +892,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="127" />
+      <option name="time" value="130" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -898,20 +918,23 @@
           <caret line="513" column="28" selection-start-line="513" selection-start-column="28" selection-end-line="513" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#changeMomentum#0;class#5412:6171" expanded="false" />
-            <element signature="class#6238:6990" expanded="false" />
-            <element signature="method#changeRate#0;class#6238:6990" expanded="false" />
-            <element signature="class#7058:7824" expanded="false" />
-            <element signature="method#changeThreshold#0;class#7058:7824" expanded="false" />
-            <element signature="class#7887:8636" expanded="false" />
-            <element signature="method#changeMaxTimes#0;class#7887:8636" expanded="false" />
-            <element signature="class#8703:9463" expanded="false" />
-            <element signature="method#changeMinError#0;class#8703:9463" expanded="false" />
-            <element signature="class#9527:10480" expanded="false" />
-            <element signature="method#changeMinRange#0;class#9527:10480" expanded="false" />
-            <element signature="class#10544:11496" expanded="false" />
-            <element signature="method#changeMaxRange#0;class#10544:11496" expanded="false" />
-            <element signature="class#11559:12283" expanded="false" />
+            <element signature="class#4526:4966" expanded="false" />
+            <element signature="e#4889#4890#0" expanded="true" />
+            <element signature="e#4955#4956#0" expanded="true" />
+            <element signature="class#5033:5758" expanded="false" />
+            <element signature="method#changeMomentum#0;class#5033:5758" expanded="false" />
+            <element signature="method#changeRate#0;class#5825:6543" expanded="false" />
+            <element signature="class#6611:7343" expanded="false" />
+            <element signature="method#changeThreshold#0;class#6611:7343" expanded="false" />
+            <element signature="class#7406:8121" expanded="false" />
+            <element signature="method#changeMaxTimes#0;class#7406:8121" expanded="false" />
+            <element signature="class#8188:8914" expanded="false" />
+            <element signature="method#changeMinError#0;class#8188:8914" expanded="false" />
+            <element signature="class#8978:9893" expanded="false" />
+            <element signature="method#changeMinRange#0;class#8978:9893" expanded="false" />
+            <element signature="class#9957:10871" expanded="false" />
+            <element signature="method#changeMaxRange#0;class#9957:10871" expanded="false" />
+            <element signature="class#10934:11624" expanded="false" />
             <element signature="method#loadFile#0;class#MainFrame#0" expanded="false" />
             <element signature="method#initialData#0;class#MainFrame#0" expanded="false" />
             <element signature="method#round#0;class#MainFrame#0" expanded="false" />
@@ -930,7 +953,15 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="method#NeuralNetwork#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#getRandomNumber#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#setInput#0;class#NeuralNetwork#0" expanded="false" />
             <element signature="method#getOutput#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#applyBackpropagation#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#test#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#getOutputKind#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#printAllWeights#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#printWeights#0;class#NeuralNetwork#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -947,7 +978,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-          <folding />
+          <folding>
+            <element signature="e#451#452#0" expanded="true" />
+            <element signature="e#480#481#0" expanded="true" />
+            <element signature="e#512#513#0" expanded="true" />
+            <element signature="e#538#539#0" expanded="true" />
+            <element signature="e#574#575#0" expanded="true" />
+            <element signature="e#604#605#0" expanded="true" />
+            <element signature="e#634#635#0" expanded="true" />
+            <element signature="e#669#670#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -965,20 +1005,23 @@
           <caret line="301" column="35" selection-start-line="301" selection-start-column="35" selection-end-line="301" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#changeMomentum#0;class#5412:6171" expanded="false" />
-            <element signature="class#6238:6990" expanded="false" />
-            <element signature="method#changeRate#0;class#6238:6990" expanded="false" />
-            <element signature="class#7058:7824" expanded="false" />
-            <element signature="method#changeThreshold#0;class#7058:7824" expanded="false" />
-            <element signature="class#7887:8636" expanded="false" />
-            <element signature="method#changeMaxTimes#0;class#7887:8636" expanded="false" />
-            <element signature="class#8703:9463" expanded="false" />
-            <element signature="method#changeMinError#0;class#8703:9463" expanded="false" />
-            <element signature="class#9527:10480" expanded="false" />
-            <element signature="method#changeMinRange#0;class#9527:10480" expanded="false" />
-            <element signature="class#10544:11496" expanded="false" />
-            <element signature="method#changeMaxRange#0;class#10544:11496" expanded="false" />
-            <element signature="class#11559:12283" expanded="false" />
+            <element signature="class#4526:4966" expanded="false" />
+            <element signature="e#4889#4890#0" expanded="true" />
+            <element signature="e#4955#4956#0" expanded="true" />
+            <element signature="class#5033:5758" expanded="false" />
+            <element signature="method#changeMomentum#0;class#5033:5758" expanded="false" />
+            <element signature="method#changeRate#0;class#5825:6543" expanded="false" />
+            <element signature="class#6611:7343" expanded="false" />
+            <element signature="method#changeThreshold#0;class#6611:7343" expanded="false" />
+            <element signature="class#7406:8121" expanded="false" />
+            <element signature="method#changeMaxTimes#0;class#7406:8121" expanded="false" />
+            <element signature="class#8188:8914" expanded="false" />
+            <element signature="method#changeMinError#0;class#8188:8914" expanded="false" />
+            <element signature="class#8978:9893" expanded="false" />
+            <element signature="method#changeMinRange#0;class#8978:9893" expanded="false" />
+            <element signature="class#9957:10871" expanded="false" />
+            <element signature="method#changeMaxRange#0;class#9957:10871" expanded="false" />
+            <element signature="class#10934:11624" expanded="false" />
             <element signature="method#loadFile#0;class#MainFrame#0" expanded="false" />
             <element signature="method#initialData#0;class#MainFrame#0" expanded="false" />
             <element signature="method#round#0;class#MainFrame#0" expanded="false" />
@@ -997,7 +1040,15 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="method#NeuralNetwork#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#getRandomNumber#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#setInput#0;class#NeuralNetwork#0" expanded="false" />
             <element signature="method#getOutput#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#applyBackpropagation#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#test#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#getOutputKind#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#printAllWeights#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#printWeights#0;class#NeuralNetwork#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1006,7 +1057,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
-          <folding />
+          <folding>
+            <element signature="e#451#452#0" expanded="true" />
+            <element signature="e#480#481#0" expanded="true" />
+            <element signature="e#512#513#0" expanded="true" />
+            <element signature="e#538#539#0" expanded="true" />
+            <element signature="e#574#575#0" expanded="true" />
+            <element signature="e#604#605#0" expanded="true" />
+            <element signature="e#634#635#0" expanded="true" />
+            <element signature="e#669#670#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1025,20 +1085,23 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#changeMomentum#0;class#5412:6171" expanded="false" />
-            <element signature="class#6238:6990" expanded="false" />
-            <element signature="method#changeRate#0;class#6238:6990" expanded="false" />
-            <element signature="class#7058:7824" expanded="false" />
-            <element signature="method#changeThreshold#0;class#7058:7824" expanded="false" />
-            <element signature="class#7887:8636" expanded="false" />
-            <element signature="method#changeMaxTimes#0;class#7887:8636" expanded="false" />
-            <element signature="class#8703:9463" expanded="false" />
-            <element signature="method#changeMinError#0;class#8703:9463" expanded="false" />
-            <element signature="class#9527:10480" expanded="false" />
-            <element signature="method#changeMinRange#0;class#9527:10480" expanded="false" />
-            <element signature="class#10544:11496" expanded="false" />
-            <element signature="method#changeMaxRange#0;class#10544:11496" expanded="false" />
-            <element signature="class#11559:12283" expanded="false" />
+            <element signature="class#4526:4966" expanded="false" />
+            <element signature="e#4889#4890#0" expanded="true" />
+            <element signature="e#4955#4956#0" expanded="true" />
+            <element signature="class#5033:5758" expanded="false" />
+            <element signature="method#changeMomentum#0;class#5033:5758" expanded="false" />
+            <element signature="method#changeRate#0;class#5825:6543" expanded="false" />
+            <element signature="class#6611:7343" expanded="false" />
+            <element signature="method#changeThreshold#0;class#6611:7343" expanded="false" />
+            <element signature="class#7406:8121" expanded="false" />
+            <element signature="method#changeMaxTimes#0;class#7406:8121" expanded="false" />
+            <element signature="class#8188:8914" expanded="false" />
+            <element signature="method#changeMinError#0;class#8188:8914" expanded="false" />
+            <element signature="class#8978:9893" expanded="false" />
+            <element signature="method#changeMinRange#0;class#8978:9893" expanded="false" />
+            <element signature="class#9957:10871" expanded="false" />
+            <element signature="method#changeMaxRange#0;class#9957:10871" expanded="false" />
+            <element signature="class#10934:11624" expanded="false" />
             <element signature="method#loadFile#0;class#MainFrame#0" expanded="false" />
             <element signature="method#initialData#0;class#MainFrame#0" expanded="false" />
             <element signature="method#round#0;class#MainFrame#0" expanded="false" />
@@ -1058,20 +1121,23 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#changeMomentum#0;class#5412:6171" expanded="false" />
-            <element signature="class#6238:6990" expanded="false" />
-            <element signature="method#changeRate#0;class#6238:6990" expanded="false" />
-            <element signature="class#7058:7824" expanded="false" />
-            <element signature="method#changeThreshold#0;class#7058:7824" expanded="false" />
-            <element signature="class#7887:8636" expanded="false" />
-            <element signature="method#changeMaxTimes#0;class#7887:8636" expanded="false" />
-            <element signature="class#8703:9463" expanded="false" />
-            <element signature="method#changeMinError#0;class#8703:9463" expanded="false" />
-            <element signature="class#9527:10480" expanded="false" />
-            <element signature="method#changeMinRange#0;class#9527:10480" expanded="false" />
-            <element signature="class#10544:11496" expanded="false" />
-            <element signature="method#changeMaxRange#0;class#10544:11496" expanded="false" />
-            <element signature="class#11559:12283" expanded="false" />
+            <element signature="class#4526:4966" expanded="false" />
+            <element signature="e#4889#4890#0" expanded="true" />
+            <element signature="e#4955#4956#0" expanded="true" />
+            <element signature="class#5033:5758" expanded="false" />
+            <element signature="method#changeMomentum#0;class#5033:5758" expanded="false" />
+            <element signature="method#changeRate#0;class#5825:6543" expanded="false" />
+            <element signature="class#6611:7343" expanded="false" />
+            <element signature="method#changeThreshold#0;class#6611:7343" expanded="false" />
+            <element signature="class#7406:8121" expanded="false" />
+            <element signature="method#changeMaxTimes#0;class#7406:8121" expanded="false" />
+            <element signature="class#8188:8914" expanded="false" />
+            <element signature="method#changeMinError#0;class#8188:8914" expanded="false" />
+            <element signature="class#8978:9893" expanded="false" />
+            <element signature="method#changeMinRange#0;class#8978:9893" expanded="false" />
+            <element signature="class#9957:10871" expanded="false" />
+            <element signature="method#changeMaxRange#0;class#9957:10871" expanded="false" />
+            <element signature="class#10934:11624" expanded="false" />
             <element signature="method#loadFile#0;class#MainFrame#0" expanded="false" />
             <element signature="method#initialData#0;class#MainFrame#0" expanded="false" />
             <element signature="method#round#0;class#MainFrame#0" expanded="false" />
@@ -1091,61 +1157,23 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#changeMomentum#0;class#5412:6171" expanded="false" />
-            <element signature="class#6238:6990" expanded="false" />
-            <element signature="method#changeRate#0;class#6238:6990" expanded="false" />
-            <element signature="class#7058:7824" expanded="false" />
-            <element signature="method#changeThreshold#0;class#7058:7824" expanded="false" />
-            <element signature="class#7887:8636" expanded="false" />
-            <element signature="method#changeMaxTimes#0;class#7887:8636" expanded="false" />
-            <element signature="class#8703:9463" expanded="false" />
-            <element signature="method#changeMinError#0;class#8703:9463" expanded="false" />
-            <element signature="class#9527:10480" expanded="false" />
-            <element signature="method#changeMinRange#0;class#9527:10480" expanded="false" />
-            <element signature="class#10544:11496" expanded="false" />
-            <element signature="method#changeMaxRange#0;class#10544:11496" expanded="false" />
-            <element signature="class#11559:12283" expanded="false" />
-            <element signature="method#loadFile#0;class#MainFrame#0" expanded="false" />
-            <element signature="method#initialData#0;class#MainFrame#0" expanded="false" />
-            <element signature="method#round#0;class#MainFrame#0" expanded="false" />
-            <element signature="method#alertBackground#0;class#MainFrame#0" expanded="false" />
-            <element signature="method#resetFrame#0;class#MainFrame#0" expanded="false" />
-            <element signature="method#changeLAF#0;class#MainFrame#0" expanded="false" />
-            <element signature="method#createUIComponents#0;class#MainFrame#0" expanded="false" />
-            <element signature="method#main#0;class#MainFrame#0" expanded="false" />
-            <element signature="method#drawScale#0;class#GPanel#0;class#MainFrame#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Backpropagation/MainFrame.form">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Backpropagation/MainFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#changeMomentum#0;class#5412:6171" expanded="false" />
-            <element signature="class#6238:6990" expanded="false" />
-            <element signature="method#changeRate#0;class#6238:6990" expanded="false" />
-            <element signature="class#7058:7824" expanded="false" />
-            <element signature="method#changeThreshold#0;class#7058:7824" expanded="false" />
-            <element signature="class#7887:8636" expanded="false" />
-            <element signature="method#changeMaxTimes#0;class#7887:8636" expanded="false" />
-            <element signature="class#8703:9463" expanded="false" />
-            <element signature="method#changeMinError#0;class#8703:9463" expanded="false" />
-            <element signature="class#9527:10480" expanded="false" />
-            <element signature="method#changeMinRange#0;class#9527:10480" expanded="false" />
-            <element signature="class#10544:11496" expanded="false" />
-            <element signature="method#changeMaxRange#0;class#10544:11496" expanded="false" />
-            <element signature="class#11559:12283" expanded="false" />
+            <element signature="class#4526:4966" expanded="false" />
+            <element signature="e#4889#4890#0" expanded="true" />
+            <element signature="e#4955#4956#0" expanded="true" />
+            <element signature="class#5033:5758" expanded="false" />
+            <element signature="method#changeMomentum#0;class#5033:5758" expanded="false" />
+            <element signature="method#changeRate#0;class#5825:6543" expanded="false" />
+            <element signature="class#6611:7343" expanded="false" />
+            <element signature="method#changeThreshold#0;class#6611:7343" expanded="false" />
+            <element signature="class#7406:8121" expanded="false" />
+            <element signature="method#changeMaxTimes#0;class#7406:8121" expanded="false" />
+            <element signature="class#8188:8914" expanded="false" />
+            <element signature="method#changeMinError#0;class#8188:8914" expanded="false" />
+            <element signature="class#8978:9893" expanded="false" />
+            <element signature="method#changeMinRange#0;class#8978:9893" expanded="false" />
+            <element signature="class#9957:10871" expanded="false" />
+            <element signature="method#changeMaxRange#0;class#9957:10871" expanded="false" />
+            <element signature="class#10934:11624" expanded="false" />
             <element signature="method#loadFile#0;class#MainFrame#0" expanded="false" />
             <element signature="method#initialData#0;class#MainFrame#0" expanded="false" />
             <element signature="method#round#0;class#MainFrame#0" expanded="false" />
@@ -1173,20 +1201,23 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#changeMomentum#0;class#5412:6171" expanded="false" />
-            <element signature="class#6238:6990" expanded="false" />
-            <element signature="method#changeRate#0;class#6238:6990" expanded="false" />
-            <element signature="class#7058:7824" expanded="false" />
-            <element signature="method#changeThreshold#0;class#7058:7824" expanded="false" />
-            <element signature="class#7887:8636" expanded="false" />
-            <element signature="method#changeMaxTimes#0;class#7887:8636" expanded="false" />
-            <element signature="class#8703:9463" expanded="false" />
-            <element signature="method#changeMinError#0;class#8703:9463" expanded="false" />
-            <element signature="class#9527:10480" expanded="false" />
-            <element signature="method#changeMinRange#0;class#9527:10480" expanded="false" />
-            <element signature="class#10544:11496" expanded="false" />
-            <element signature="method#changeMaxRange#0;class#10544:11496" expanded="false" />
-            <element signature="class#11559:12283" expanded="false" />
+            <element signature="class#4526:4966" expanded="false" />
+            <element signature="e#4889#4890#0" expanded="true" />
+            <element signature="e#4955#4956#0" expanded="true" />
+            <element signature="class#5033:5758" expanded="false" />
+            <element signature="method#changeMomentum#0;class#5033:5758" expanded="false" />
+            <element signature="method#changeRate#0;class#5825:6543" expanded="false" />
+            <element signature="class#6611:7343" expanded="false" />
+            <element signature="method#changeThreshold#0;class#6611:7343" expanded="false" />
+            <element signature="class#7406:8121" expanded="false" />
+            <element signature="method#changeMaxTimes#0;class#7406:8121" expanded="false" />
+            <element signature="class#8188:8914" expanded="false" />
+            <element signature="method#changeMinError#0;class#8188:8914" expanded="false" />
+            <element signature="class#8978:9893" expanded="false" />
+            <element signature="method#changeMinRange#0;class#8978:9893" expanded="false" />
+            <element signature="class#9957:10871" expanded="false" />
+            <element signature="method#changeMaxRange#0;class#9957:10871" expanded="false" />
+            <element signature="class#10934:11624" expanded="false" />
             <element signature="method#loadFile#0;class#MainFrame#0" expanded="false" />
             <element signature="method#initialData#0;class#MainFrame#0" expanded="false" />
             <element signature="method#round#0;class#MainFrame#0" expanded="false" />
@@ -1214,20 +1245,23 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#changeMomentum#0;class#5412:6171" expanded="false" />
-            <element signature="class#6238:6990" expanded="false" />
-            <element signature="method#changeRate#0;class#6238:6990" expanded="false" />
-            <element signature="class#7058:7824" expanded="false" />
-            <element signature="method#changeThreshold#0;class#7058:7824" expanded="false" />
-            <element signature="class#7887:8636" expanded="false" />
-            <element signature="method#changeMaxTimes#0;class#7887:8636" expanded="false" />
-            <element signature="class#8703:9463" expanded="false" />
-            <element signature="method#changeMinError#0;class#8703:9463" expanded="false" />
-            <element signature="class#9527:10480" expanded="false" />
-            <element signature="method#changeMinRange#0;class#9527:10480" expanded="false" />
-            <element signature="class#10544:11496" expanded="false" />
-            <element signature="method#changeMaxRange#0;class#10544:11496" expanded="false" />
-            <element signature="class#11559:12283" expanded="false" />
+            <element signature="class#4526:4966" expanded="false" />
+            <element signature="e#4889#4890#0" expanded="true" />
+            <element signature="e#4955#4956#0" expanded="true" />
+            <element signature="class#5033:5758" expanded="false" />
+            <element signature="method#changeMomentum#0;class#5033:5758" expanded="false" />
+            <element signature="method#changeRate#0;class#5825:6543" expanded="false" />
+            <element signature="class#6611:7343" expanded="false" />
+            <element signature="method#changeThreshold#0;class#6611:7343" expanded="false" />
+            <element signature="class#7406:8121" expanded="false" />
+            <element signature="method#changeMaxTimes#0;class#7406:8121" expanded="false" />
+            <element signature="class#8188:8914" expanded="false" />
+            <element signature="method#changeMinError#0;class#8188:8914" expanded="false" />
+            <element signature="class#8978:9893" expanded="false" />
+            <element signature="method#changeMinRange#0;class#8978:9893" expanded="false" />
+            <element signature="class#9957:10871" expanded="false" />
+            <element signature="method#changeMaxRange#0;class#9957:10871" expanded="false" />
+            <element signature="class#10934:11624" expanded="false" />
             <element signature="method#loadFile#0;class#MainFrame#0" expanded="false" />
             <element signature="method#initialData#0;class#MainFrame#0" expanded="false" />
             <element signature="method#round#0;class#MainFrame#0" expanded="false" />
@@ -1255,20 +1289,23 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#changeMomentum#0;class#5412:6171" expanded="false" />
-            <element signature="class#6238:6990" expanded="false" />
-            <element signature="method#changeRate#0;class#6238:6990" expanded="false" />
-            <element signature="class#7058:7824" expanded="false" />
-            <element signature="method#changeThreshold#0;class#7058:7824" expanded="false" />
-            <element signature="class#7887:8636" expanded="false" />
-            <element signature="method#changeMaxTimes#0;class#7887:8636" expanded="false" />
-            <element signature="class#8703:9463" expanded="false" />
-            <element signature="method#changeMinError#0;class#8703:9463" expanded="false" />
-            <element signature="class#9527:10480" expanded="false" />
-            <element signature="method#changeMinRange#0;class#9527:10480" expanded="false" />
-            <element signature="class#10544:11496" expanded="false" />
-            <element signature="method#changeMaxRange#0;class#10544:11496" expanded="false" />
-            <element signature="class#11559:12283" expanded="false" />
+            <element signature="class#4526:4966" expanded="false" />
+            <element signature="e#4889#4890#0" expanded="true" />
+            <element signature="e#4955#4956#0" expanded="true" />
+            <element signature="class#5033:5758" expanded="false" />
+            <element signature="method#changeMomentum#0;class#5033:5758" expanded="false" />
+            <element signature="method#changeRate#0;class#5825:6543" expanded="false" />
+            <element signature="class#6611:7343" expanded="false" />
+            <element signature="method#changeThreshold#0;class#6611:7343" expanded="false" />
+            <element signature="class#7406:8121" expanded="false" />
+            <element signature="method#changeMaxTimes#0;class#7406:8121" expanded="false" />
+            <element signature="class#8188:8914" expanded="false" />
+            <element signature="method#changeMinError#0;class#8188:8914" expanded="false" />
+            <element signature="class#8978:9893" expanded="false" />
+            <element signature="method#changeMinRange#0;class#8978:9893" expanded="false" />
+            <element signature="class#9957:10871" expanded="false" />
+            <element signature="method#changeMaxRange#0;class#9957:10871" expanded="false" />
+            <element signature="class#10934:11624" expanded="false" />
             <element signature="method#loadFile#0;class#MainFrame#0" expanded="false" />
             <element signature="method#initialData#0;class#MainFrame#0" expanded="false" />
             <element signature="method#round#0;class#MainFrame#0" expanded="false" />
@@ -1296,20 +1333,23 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#changeMomentum#0;class#5412:6171" expanded="false" />
-            <element signature="class#6238:6990" expanded="false" />
-            <element signature="method#changeRate#0;class#6238:6990" expanded="false" />
-            <element signature="class#7058:7824" expanded="false" />
-            <element signature="method#changeThreshold#0;class#7058:7824" expanded="false" />
-            <element signature="class#7887:8636" expanded="false" />
-            <element signature="method#changeMaxTimes#0;class#7887:8636" expanded="false" />
-            <element signature="class#8703:9463" expanded="false" />
-            <element signature="method#changeMinError#0;class#8703:9463" expanded="false" />
-            <element signature="class#9527:10480" expanded="false" />
-            <element signature="method#changeMinRange#0;class#9527:10480" expanded="false" />
-            <element signature="class#10544:11496" expanded="false" />
-            <element signature="method#changeMaxRange#0;class#10544:11496" expanded="false" />
-            <element signature="class#11559:12283" expanded="false" />
+            <element signature="class#4526:4966" expanded="false" />
+            <element signature="e#4889#4890#0" expanded="true" />
+            <element signature="e#4955#4956#0" expanded="true" />
+            <element signature="class#5033:5758" expanded="false" />
+            <element signature="method#changeMomentum#0;class#5033:5758" expanded="false" />
+            <element signature="method#changeRate#0;class#5825:6543" expanded="false" />
+            <element signature="class#6611:7343" expanded="false" />
+            <element signature="method#changeThreshold#0;class#6611:7343" expanded="false" />
+            <element signature="class#7406:8121" expanded="false" />
+            <element signature="method#changeMaxTimes#0;class#7406:8121" expanded="false" />
+            <element signature="class#8188:8914" expanded="false" />
+            <element signature="method#changeMinError#0;class#8188:8914" expanded="false" />
+            <element signature="class#8978:9893" expanded="false" />
+            <element signature="method#changeMinRange#0;class#8978:9893" expanded="false" />
+            <element signature="class#9957:10871" expanded="false" />
+            <element signature="method#changeMaxRange#0;class#9957:10871" expanded="false" />
+            <element signature="class#10934:11624" expanded="false" />
             <element signature="method#loadFile#0;class#MainFrame#0" expanded="false" />
             <element signature="method#initialData#0;class#MainFrame#0" expanded="false" />
             <element signature="method#round#0;class#MainFrame#0" expanded="false" />
@@ -1337,20 +1377,23 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#changeMomentum#0;class#5412:6171" expanded="false" />
-            <element signature="class#6238:6990" expanded="false" />
-            <element signature="method#changeRate#0;class#6238:6990" expanded="false" />
-            <element signature="class#7058:7824" expanded="false" />
-            <element signature="method#changeThreshold#0;class#7058:7824" expanded="false" />
-            <element signature="class#7887:8636" expanded="false" />
-            <element signature="method#changeMaxTimes#0;class#7887:8636" expanded="false" />
-            <element signature="class#8703:9463" expanded="false" />
-            <element signature="method#changeMinError#0;class#8703:9463" expanded="false" />
-            <element signature="class#9527:10480" expanded="false" />
-            <element signature="method#changeMinRange#0;class#9527:10480" expanded="false" />
-            <element signature="class#10544:11496" expanded="false" />
-            <element signature="method#changeMaxRange#0;class#10544:11496" expanded="false" />
-            <element signature="class#11559:12283" expanded="false" />
+            <element signature="class#4526:4966" expanded="false" />
+            <element signature="e#4889#4890#0" expanded="true" />
+            <element signature="e#4955#4956#0" expanded="true" />
+            <element signature="class#5033:5758" expanded="false" />
+            <element signature="method#changeMomentum#0;class#5033:5758" expanded="false" />
+            <element signature="method#changeRate#0;class#5825:6543" expanded="false" />
+            <element signature="class#6611:7343" expanded="false" />
+            <element signature="method#changeThreshold#0;class#6611:7343" expanded="false" />
+            <element signature="class#7406:8121" expanded="false" />
+            <element signature="method#changeMaxTimes#0;class#7406:8121" expanded="false" />
+            <element signature="class#8188:8914" expanded="false" />
+            <element signature="method#changeMinError#0;class#8188:8914" expanded="false" />
+            <element signature="class#8978:9893" expanded="false" />
+            <element signature="method#changeMinRange#0;class#8978:9893" expanded="false" />
+            <element signature="class#9957:10871" expanded="false" />
+            <element signature="method#changeMaxRange#0;class#9957:10871" expanded="false" />
+            <element signature="class#10934:11624" expanded="false" />
             <element signature="method#loadFile#0;class#MainFrame#0" expanded="false" />
             <element signature="method#initialData#0;class#MainFrame#0" expanded="false" />
             <element signature="method#round#0;class#MainFrame#0" expanded="false" />
@@ -1378,20 +1421,23 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#changeMomentum#0;class#5412:6171" expanded="false" />
-            <element signature="class#6238:6990" expanded="false" />
-            <element signature="method#changeRate#0;class#6238:6990" expanded="false" />
-            <element signature="class#7058:7824" expanded="false" />
-            <element signature="method#changeThreshold#0;class#7058:7824" expanded="false" />
-            <element signature="class#7887:8636" expanded="false" />
-            <element signature="method#changeMaxTimes#0;class#7887:8636" expanded="false" />
-            <element signature="class#8703:9463" expanded="false" />
-            <element signature="method#changeMinError#0;class#8703:9463" expanded="false" />
-            <element signature="class#9527:10480" expanded="false" />
-            <element signature="method#changeMinRange#0;class#9527:10480" expanded="false" />
-            <element signature="class#10544:11496" expanded="false" />
-            <element signature="method#changeMaxRange#0;class#10544:11496" expanded="false" />
-            <element signature="class#11559:12283" expanded="false" />
+            <element signature="class#4526:4966" expanded="false" />
+            <element signature="e#4889#4890#0" expanded="true" />
+            <element signature="e#4955#4956#0" expanded="true" />
+            <element signature="class#5033:5758" expanded="false" />
+            <element signature="method#changeMomentum#0;class#5033:5758" expanded="false" />
+            <element signature="method#changeRate#0;class#5825:6543" expanded="false" />
+            <element signature="class#6611:7343" expanded="false" />
+            <element signature="method#changeThreshold#0;class#6611:7343" expanded="false" />
+            <element signature="class#7406:8121" expanded="false" />
+            <element signature="method#changeMaxTimes#0;class#7406:8121" expanded="false" />
+            <element signature="class#8188:8914" expanded="false" />
+            <element signature="method#changeMinError#0;class#8188:8914" expanded="false" />
+            <element signature="class#8978:9893" expanded="false" />
+            <element signature="method#changeMinRange#0;class#8978:9893" expanded="false" />
+            <element signature="class#9957:10871" expanded="false" />
+            <element signature="method#changeMaxRange#0;class#9957:10871" expanded="false" />
+            <element signature="class#10934:11624" expanded="false" />
             <element signature="method#loadFile#0;class#MainFrame#0" expanded="false" />
             <element signature="method#initialData#0;class#MainFrame#0" expanded="false" />
             <element signature="method#round#0;class#MainFrame#0" expanded="false" />
@@ -1419,20 +1465,23 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#changeMomentum#0;class#5412:6171" expanded="false" />
-            <element signature="class#6238:6990" expanded="false" />
-            <element signature="method#changeRate#0;class#6238:6990" expanded="false" />
-            <element signature="class#7058:7824" expanded="false" />
-            <element signature="method#changeThreshold#0;class#7058:7824" expanded="false" />
-            <element signature="class#7887:8636" expanded="false" />
-            <element signature="method#changeMaxTimes#0;class#7887:8636" expanded="false" />
-            <element signature="class#8703:9463" expanded="false" />
-            <element signature="method#changeMinError#0;class#8703:9463" expanded="false" />
-            <element signature="class#9527:10480" expanded="false" />
-            <element signature="method#changeMinRange#0;class#9527:10480" expanded="false" />
-            <element signature="class#10544:11496" expanded="false" />
-            <element signature="method#changeMaxRange#0;class#10544:11496" expanded="false" />
-            <element signature="class#11559:12283" expanded="false" />
+            <element signature="class#4526:4966" expanded="false" />
+            <element signature="e#4889#4890#0" expanded="true" />
+            <element signature="e#4955#4956#0" expanded="true" />
+            <element signature="class#5033:5758" expanded="false" />
+            <element signature="method#changeMomentum#0;class#5033:5758" expanded="false" />
+            <element signature="method#changeRate#0;class#5825:6543" expanded="false" />
+            <element signature="class#6611:7343" expanded="false" />
+            <element signature="method#changeThreshold#0;class#6611:7343" expanded="false" />
+            <element signature="class#7406:8121" expanded="false" />
+            <element signature="method#changeMaxTimes#0;class#7406:8121" expanded="false" />
+            <element signature="class#8188:8914" expanded="false" />
+            <element signature="method#changeMinError#0;class#8188:8914" expanded="false" />
+            <element signature="class#8978:9893" expanded="false" />
+            <element signature="method#changeMinRange#0;class#8978:9893" expanded="false" />
+            <element signature="class#9957:10871" expanded="false" />
+            <element signature="method#changeMaxRange#0;class#9957:10871" expanded="false" />
+            <element signature="class#10934:11624" expanded="false" />
             <element signature="method#loadFile#0;class#MainFrame#0" expanded="false" />
             <element signature="method#initialData#0;class#MainFrame#0" expanded="false" />
             <element signature="method#round#0;class#MainFrame#0" expanded="false" />
@@ -1460,20 +1509,23 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#changeMomentum#0;class#5412:6171" expanded="false" />
-            <element signature="class#6238:6990" expanded="false" />
-            <element signature="method#changeRate#0;class#6238:6990" expanded="false" />
-            <element signature="class#7058:7824" expanded="false" />
-            <element signature="method#changeThreshold#0;class#7058:7824" expanded="false" />
-            <element signature="class#7887:8636" expanded="false" />
-            <element signature="method#changeMaxTimes#0;class#7887:8636" expanded="false" />
-            <element signature="class#8703:9463" expanded="false" />
-            <element signature="method#changeMinError#0;class#8703:9463" expanded="false" />
-            <element signature="class#9527:10480" expanded="false" />
-            <element signature="method#changeMinRange#0;class#9527:10480" expanded="false" />
-            <element signature="class#10544:11496" expanded="false" />
-            <element signature="method#changeMaxRange#0;class#10544:11496" expanded="false" />
-            <element signature="class#11559:12283" expanded="false" />
+            <element signature="class#4526:4966" expanded="false" />
+            <element signature="e#4889#4890#0" expanded="true" />
+            <element signature="e#4955#4956#0" expanded="true" />
+            <element signature="class#5033:5758" expanded="false" />
+            <element signature="method#changeMomentum#0;class#5033:5758" expanded="false" />
+            <element signature="method#changeRate#0;class#5825:6543" expanded="false" />
+            <element signature="class#6611:7343" expanded="false" />
+            <element signature="method#changeThreshold#0;class#6611:7343" expanded="false" />
+            <element signature="class#7406:8121" expanded="false" />
+            <element signature="method#changeMaxTimes#0;class#7406:8121" expanded="false" />
+            <element signature="class#8188:8914" expanded="false" />
+            <element signature="method#changeMinError#0;class#8188:8914" expanded="false" />
+            <element signature="class#8978:9893" expanded="false" />
+            <element signature="method#changeMinRange#0;class#8978:9893" expanded="false" />
+            <element signature="class#9957:10871" expanded="false" />
+            <element signature="method#changeMaxRange#0;class#9957:10871" expanded="false" />
+            <element signature="class#10934:11624" expanded="false" />
             <element signature="method#loadFile#0;class#MainFrame#0" expanded="false" />
             <element signature="method#initialData#0;class#MainFrame#0" expanded="false" />
             <element signature="method#round#0;class#MainFrame#0" expanded="false" />
@@ -1501,20 +1553,67 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#changeMomentum#0;class#5412:6171" expanded="false" />
-            <element signature="class#6238:6990" expanded="false" />
-            <element signature="method#changeRate#0;class#6238:6990" expanded="false" />
-            <element signature="class#7058:7824" expanded="false" />
-            <element signature="method#changeThreshold#0;class#7058:7824" expanded="false" />
-            <element signature="class#7887:8636" expanded="false" />
-            <element signature="method#changeMaxTimes#0;class#7887:8636" expanded="false" />
-            <element signature="class#8703:9463" expanded="false" />
-            <element signature="method#changeMinError#0;class#8703:9463" expanded="false" />
-            <element signature="class#9527:10480" expanded="false" />
-            <element signature="method#changeMinRange#0;class#9527:10480" expanded="false" />
-            <element signature="class#10544:11496" expanded="false" />
-            <element signature="method#changeMaxRange#0;class#10544:11496" expanded="false" />
-            <element signature="class#11559:12283" expanded="false" />
+            <element signature="class#4526:4966" expanded="false" />
+            <element signature="e#4889#4890#0" expanded="true" />
+            <element signature="e#4955#4956#0" expanded="true" />
+            <element signature="class#5033:5758" expanded="false" />
+            <element signature="method#changeMomentum#0;class#5033:5758" expanded="false" />
+            <element signature="method#changeRate#0;class#5825:6543" expanded="false" />
+            <element signature="class#6611:7343" expanded="false" />
+            <element signature="method#changeThreshold#0;class#6611:7343" expanded="false" />
+            <element signature="class#7406:8121" expanded="false" />
+            <element signature="method#changeMaxTimes#0;class#7406:8121" expanded="false" />
+            <element signature="class#8188:8914" expanded="false" />
+            <element signature="method#changeMinError#0;class#8188:8914" expanded="false" />
+            <element signature="class#8978:9893" expanded="false" />
+            <element signature="method#changeMinRange#0;class#8978:9893" expanded="false" />
+            <element signature="class#9957:10871" expanded="false" />
+            <element signature="method#changeMaxRange#0;class#9957:10871" expanded="false" />
+            <element signature="class#10934:11624" expanded="false" />
+            <element signature="method#loadFile#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#initialData#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#round#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#alertBackground#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#resetFrame#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#changeLAF#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#createUIComponents#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#main#0;class#MainFrame#0" expanded="false" />
+            <element signature="method#drawScale#0;class#GPanel#0;class#MainFrame#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Backpropagation/MainFrame.form">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Backpropagation/MainFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#4526:4966" expanded="false" />
+            <element signature="e#4889#4890#0" expanded="true" />
+            <element signature="e#4955#4956#0" expanded="true" />
+            <element signature="class#5033:5758" expanded="false" />
+            <element signature="method#changeMomentum#0;class#5033:5758" expanded="false" />
+            <element signature="method#changeRate#0;class#5825:6543" expanded="false" />
+            <element signature="class#6611:7343" expanded="false" />
+            <element signature="method#changeThreshold#0;class#6611:7343" expanded="false" />
+            <element signature="class#7406:8121" expanded="false" />
+            <element signature="method#changeMaxTimes#0;class#7406:8121" expanded="false" />
+            <element signature="class#8188:8914" expanded="false" />
+            <element signature="method#changeMinError#0;class#8188:8914" expanded="false" />
+            <element signature="class#8978:9893" expanded="false" />
+            <element signature="method#changeMinRange#0;class#8978:9893" expanded="false" />
+            <element signature="class#9957:10871" expanded="false" />
+            <element signature="method#changeMaxRange#0;class#9957:10871" expanded="false" />
+            <element signature="class#10934:11624" expanded="false" />
             <element signature="method#loadFile#0;class#MainFrame#0" expanded="false" />
             <element signature="method#initialData#0;class#MainFrame#0" expanded="false" />
             <element signature="method#round#0;class#MainFrame#0" expanded="false" />
@@ -1567,32 +1666,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Backpropagation/Algorithm/Connection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Backpropagation/Algorithm/Neuron.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Backpropagation/Algorithm/NeuralNetwork.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="126" column="46" selection-start-line="126" selection-start-column="46" selection-end-line="126" selection-end-column="46" />
-          <folding>
-            <element signature="method#getOutput#0;class#NeuralNetwork#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Backpropagation/MainFrame.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
@@ -1606,24 +1679,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Backpropagation/MainFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="566">
-          <caret line="135" column="19" selection-start-line="135" selection-start-column="19" selection-end-line="135" selection-end-column="19" />
+        <state relative-caret-position="1996">
+          <caret line="412" column="31" selection-start-line="412" selection-start-column="31" selection-end-line="412" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#changeMomentum#0;class#5412:6171" expanded="false" />
-            <element signature="class#6238:6990" expanded="false" />
-            <element signature="method#changeRate#0;class#6238:6990" expanded="false" />
-            <element signature="class#7058:7824" expanded="false" />
-            <element signature="method#changeThreshold#0;class#7058:7824" expanded="false" />
-            <element signature="class#7887:8636" expanded="false" />
-            <element signature="method#changeMaxTimes#0;class#7887:8636" expanded="false" />
-            <element signature="class#8703:9463" expanded="false" />
-            <element signature="method#changeMinError#0;class#8703:9463" expanded="false" />
-            <element signature="class#9527:10480" expanded="false" />
-            <element signature="method#changeMinRange#0;class#9527:10480" expanded="false" />
-            <element signature="class#10544:11496" expanded="false" />
-            <element signature="method#changeMaxRange#0;class#10544:11496" expanded="false" />
-            <element signature="class#11559:12283" expanded="false" />
+            <element signature="class#4526:4966" expanded="false" />
+            <element signature="e#4889#4890#0" expanded="true" />
+            <element signature="e#4955#4956#0" expanded="true" />
+            <element signature="class#5033:5758" expanded="false" />
+            <element signature="method#changeMomentum#0;class#5033:5758" expanded="false" />
+            <element signature="method#changeRate#0;class#5825:6543" expanded="false" />
+            <element signature="class#6611:7343" expanded="false" />
+            <element signature="method#changeThreshold#0;class#6611:7343" expanded="false" />
+            <element signature="class#7406:8121" expanded="false" />
+            <element signature="method#changeMaxTimes#0;class#7406:8121" expanded="false" />
+            <element signature="class#8188:8914" expanded="false" />
+            <element signature="method#changeMinError#0;class#8188:8914" expanded="false" />
+            <element signature="class#8978:9893" expanded="false" />
+            <element signature="method#changeMinRange#0;class#8978:9893" expanded="false" />
+            <element signature="class#9957:10871" expanded="false" />
+            <element signature="method#changeMaxRange#0;class#9957:10871" expanded="false" />
+            <element signature="class#10934:11624" expanded="false" />
             <element signature="method#loadFile#0;class#MainFrame#0" expanded="false" />
             <element signature="method#initialData#0;class#MainFrame#0" expanded="false" />
             <element signature="method#round#0;class#MainFrame#0" expanded="false" />
@@ -1633,6 +1709,49 @@
             <element signature="method#createUIComponents#0;class#MainFrame#0" expanded="false" />
             <element signature="method#main#0;class#MainFrame#0" expanded="false" />
             <element signature="method#drawScale#0;class#GPanel#0;class#MainFrame#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Backpropagation/Algorithm/Connection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+          <folding>
+            <element signature="e#451#452#0" expanded="true" />
+            <element signature="e#480#481#0" expanded="true" />
+            <element signature="e#512#513#0" expanded="true" />
+            <element signature="e#538#539#0" expanded="true" />
+            <element signature="e#574#575#0" expanded="true" />
+            <element signature="e#604#605#0" expanded="true" />
+            <element signature="e#634#635#0" expanded="true" />
+            <element signature="e#669#670#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Backpropagation/Algorithm/Neuron.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="806">
+          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Backpropagation/Algorithm/NeuralNetwork.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="171" column="32" selection-start-line="171" selection-start-column="32" selection-end-line="171" selection-end-column="32" />
+          <folding>
+            <element signature="method#NeuralNetwork#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#getRandomNumber#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#setInput#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#getOutput#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#applyBackpropagation#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#test#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#getOutputKind#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#printAllWeights#0;class#NeuralNetwork#0" expanded="false" />
+            <element signature="method#printWeights#0;class#NeuralNetwork#0" expanded="false" />
           </folding>
         </state>
       </provider>

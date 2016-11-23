@@ -162,10 +162,11 @@ public class NeuralNetwork {
     public String run(int maxSteps, double minError) {
         int i;
         // Train neural network until minError reached or maxSteps exceeded
-        double error = 1;
+        double squareError = 10;
+        double minSquareError = 1000000;
         int correct = 0;
-        for (i = 0; i < maxSteps && error > minError; i++) {
-            error = 0;
+        for (i = 0; i < maxSteps && squareError > minError; i++) {
+            squareError = 0;
             correct = 0;
             for (Double[] input : inputs) {
                 setInput(input);
@@ -174,7 +175,7 @@ public class NeuralNetwork {
                 Double[] expectedOutput = new Double[]{input[input.length - 1]};
                 for (int j = 0; j < expectedOutput.length; j++) {
                     double err = Math.pow(expectedOutput[j] - output[j], 2) / 2;
-                    error += err;
+                    squareError += err;
                 }
                 double distance = Math.abs(outputKinds.get(0) - output[0]);
                 int idx = 0;
@@ -189,10 +190,39 @@ public class NeuralNetwork {
                 if (y == expectedOutput[0]) ++correct;
                 applyBackpropagation(expectedOutput);
             }
+            if (squareError < minSquareError) {
+                minSquareError = squareError;
+                for (Neuron[] neurons : hiddenLayers) {
+                    for (Neuron neuron : neurons) {
+                        ArrayList<Connection> connections = neuron.getAllConnections();
+                        for (Connection conn : connections) {
+                            conn.setBestWeight(conn.getWeight());
+                        }
+                    }
+                }
+                for (Neuron neuron : outputLayer) {
+                    ArrayList<Connection> connections = neuron.getAllConnections();
+                    for (Connection conn : connections) {
+                        conn.setBestWeight(conn.getWeight());
+                    }
+                }
+            }
+        }
+        if (i == maxSteps) {
+            for (Neuron[] neurons : hiddenLayers) {
+                for (Neuron neuron : neurons) {
+                    ArrayList<Connection> connections = neuron.getAllConnections();
+                    connections.forEach(Connection::setWeightAsBest);
+                }
+            }
+            for (Neuron neuron : outputLayer) {
+                ArrayList<Connection> connections = neuron.getAllConnections();
+                connections.forEach(Connection::setWeightAsBest);
+            }
         }
         printAllWeights();
         // result = runTimes + MSE + trainRate
-        return String.valueOf(i) + " " + error + " " + (double) correct / inputs.size() * 100 + "%";
+        return String.valueOf(i) + " " + squareError + " " + (double) correct / inputs.size() * 100 + "%";
     }
 
     public String test(ArrayList<Double[]> inputs, int maxSteps, double minError) {
