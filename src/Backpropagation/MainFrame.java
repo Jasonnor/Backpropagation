@@ -60,7 +60,7 @@ public class MainFrame {
     private Point mouse;
     private int maxTimes = 1000;
     private int magnification = 50;
-    private int hidden = 4;
+    private String hidden = "4,4";
     private double momentum = 0.7;
     private double learningRate = 0.1;
     private double threshold = 0;
@@ -124,14 +124,16 @@ public class MainFrame {
             }
 
             void changeHidden() {
-                try {
+                hidden = hiddenTextField.getText();
+                startTrain();/*
+                if (hidden.matches("[1-9],*[1-9]*")) {
                     alertBackground(hiddenTextField, false);
-                    hidden = Integer.valueOf(hiddenTextField.getText());
+                    hidden = hiddenTextField.getText();
                     startTrain();
-                } catch (NumberFormatException e) {
+                } else {
                     alertBackground(hiddenTextField, true);
-                    hidden = 4;
-                }
+                    hidden = "4,4";
+                }*/
             }
         });
         momentumTextField.getDocument().addDocumentListener(new DocumentListener() {
@@ -426,7 +428,7 @@ public class MainFrame {
     }
 
     private void startTrain() {
-        network = new NeuralNetwork(trainData, outputKinds, "2,2", momentum,
+        network = new NeuralNetwork(trainData, outputKinds, hidden, momentum,
                 learningRate, threshold, minRange, maxRange);
         String[] resultTrain = network.run(maxTimes, minError).split(" ");
         timesValue.setText(resultTrain[0]);
