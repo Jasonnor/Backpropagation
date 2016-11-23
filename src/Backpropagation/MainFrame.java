@@ -48,6 +48,7 @@ public class MainFrame {
     private JLabel MSEValue;
     private JTextField sizeTextField;
     private JCheckBox drawModeCheckBox;
+    private JButton trainByAllDataButton;
     private DefaultTableModel trainTableModel = new DefaultTableModel();
     private DefaultTableModel testTableModel = new DefaultTableModel();
     private DecimalFormat df = new DecimalFormat("####0.00");
@@ -87,8 +88,9 @@ public class MainFrame {
                 loadFile(fileChooser);
             }
         });
-        generateButton.addActionListener(e -> startTrain());
-        generateMenuItem.addActionListener(e -> startTrain());
+        generateButton.addActionListener(e -> startTrain(trainData));
+        generateMenuItem.addActionListener(e -> startTrain(trainData));
+        trainByAllDataButton.addActionListener(e -> startTrain(testData));
         zoomerSlider.addChangeListener(e -> {
             zoomerSlider.setBorder(
                     BorderFactory.createTitledBorder(null,
@@ -127,7 +129,7 @@ public class MainFrame {
                 try {
                     alertBackground(hiddenTextField, false);
                     hidden = Integer.valueOf(hiddenTextField.getText());
-                    startTrain();
+                    startTrain(trainData);
                 } catch (NumberFormatException e) {
                     alertBackground(hiddenTextField, true);
                     hidden = 4;
@@ -151,7 +153,7 @@ public class MainFrame {
                 try {
                     alertBackground(momentumTextField, false);
                     momentum = Double.valueOf(momentumTextField.getText());
-                    startTrain();
+                    startTrain(trainData);
                 } catch (NumberFormatException e) {
                     alertBackground(momentumTextField, true);
                     momentum = 0.5;
@@ -175,7 +177,7 @@ public class MainFrame {
                 try {
                     alertBackground(learningTextField, false);
                     learningRate = Double.valueOf(learningTextField.getText());
-                    startTrain();
+                    startTrain(trainData);
                 } catch (NumberFormatException e) {
                     alertBackground(learningTextField, true);
                     learningRate = 0.5f;
@@ -199,7 +201,7 @@ public class MainFrame {
                 try {
                     alertBackground(thresholdTextField, false);
                     threshold = Double.valueOf(thresholdTextField.getText());
-                    startTrain();
+                    startTrain(trainData);
                 } catch (NumberFormatException e) {
                     alertBackground(thresholdTextField, true);
                     threshold = 0;
@@ -223,7 +225,7 @@ public class MainFrame {
                 try {
                     alertBackground(maxTimesValue, false);
                     maxTimes = Integer.valueOf(maxTimesValue.getText());
-                    startTrain();
+                    startTrain(trainData);
                 } catch (NumberFormatException e) {
                     alertBackground(maxTimesValue, true);
                     maxTimes = 1000;
@@ -247,7 +249,7 @@ public class MainFrame {
                 try {
                     alertBackground(minErrorTextField, false);
                     minError = Double.valueOf(minErrorTextField.getText());
-                    startTrain();
+                    startTrain(trainData);
                 } catch (NumberFormatException e) {
                     alertBackground(minErrorTextField, true);
                     minError = 0.01;
@@ -274,7 +276,7 @@ public class MainFrame {
                     else {
                         alertBackground(wRangeMinValue, false);
                         minRange = Double.valueOf(wRangeMinValue.getText());
-                        startTrain();
+                        startTrain(trainData);
                     }
                 } catch (NumberFormatException e) {
                     alertBackground(wRangeMinValue, true);
@@ -302,7 +304,7 @@ public class MainFrame {
                     else {
                         alertBackground(wRangeMaxValue, false);
                         maxRange = Double.valueOf(wRangeMaxValue.getText());
-                        startTrain();
+                        startTrain(trainData);
                     }
                 } catch (NumberFormatException e) {
                     alertBackground(wRangeMaxValue, true);
@@ -327,7 +329,7 @@ public class MainFrame {
                 try {
                     alertBackground(sizeTextField, false);
                     size = Double.valueOf(sizeTextField.getText());
-                    startTrain();
+                    startTrain(trainData);
                 } catch (NumberFormatException e) {
                     alertBackground(sizeTextField, true);
                     size = 20.0;
@@ -379,7 +381,7 @@ public class MainFrame {
             testTable.setModel(testTableModel);
             // TODO - show y result at data table
             generateButton.setEnabled(true);
-            startTrain();
+            startTrain(trainData);
         } catch (IOException e1) {
             e1.printStackTrace();
         }
@@ -425,8 +427,8 @@ public class MainFrame {
         }
     }
 
-    private void startTrain() {
-        network = new NeuralNetwork(trainData, outputKinds, hidden, momentum,
+    private void startTrain(ArrayList<Double[]> inputs) {
+        network = new NeuralNetwork(inputs, outputKinds, hidden, momentum,
                 learningRate, threshold, minRange, maxRange);
         String[] resultTrain = network.run(maxTimes, minError).split(" ");
         timesValue.setText(resultTrain[0]);
