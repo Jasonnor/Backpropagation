@@ -426,7 +426,7 @@ public class MainFrame {
     }
 
     private void startTrain() {
-        network = new NeuralNetwork(trainData, outputKinds, hidden, momentum,
+        network = new NeuralNetwork(trainData, outputKinds, "2,2", momentum,
                 learningRate, threshold, minRange, maxRange);
         String[] resultTrain = network.run(maxTimes, minError).split(" ");
         timesValue.setText(resultTrain[0]);
