@@ -124,31 +124,30 @@ public class NeuralNetwork {
             double[] nowPartialDerivatives = new double[neurons.length];
             int n = 0;
             for (Neuron neuron : neurons) {
+                double y = neuron.getOutput();
+                double sumOutputs = 0;
+                if (j == hiddenLayers.size() - 1) {
+                    int k = 0;
+                    for (Neuron outputN : outputLayer) {
+                        double wjk = outputN.getConnection(neuron.id).getWeight();
+                        double dy = expectedOutput[k];
+                        double yk = outputN.getOutput();
+                        sumOutputs += (dy - yk) * yk * (1 - yk) * wjk;
+                        k++;
+                    }
+                } else {
+                    int k = 0;
+                    for (Neuron hiddenN : hiddenLayers.get(j + 1)) {
+                        double wjk = hiddenN.getConnection(neuron.id).getWeight();
+                        sumOutputs += pervPartialDerivatives[k] * wjk;
+                        k++;
+                    }
+                }
+                double partialDerivative = y * (1 - y) * sumOutputs;
+                nowPartialDerivatives[n] = partialDerivative;
                 ArrayList<Connection> connections = neuron.getAllConnections();
                 for (Connection connection : connections) {
                     double pervY = connection.leftNeuron.getOutput();
-                    double y = neuron.getOutput();
-                    double sumOutputs = 0;
-                    if (j == hiddenLayers.size() - 1) {
-                        int k = 0;
-                        for (Neuron outputN : outputLayer) {
-                            double wjk = outputN.getConnection(neuron.id).getWeight();
-                            double dy = expectedOutput[k];
-                            double yk = outputN.getOutput();
-                            sumOutputs += (dy - yk) * yk * (1 - yk) * wjk;
-                            k++;
-                        }
-                    } else {
-                        int k = 0;
-                        for (Neuron hiddenN : hiddenLayers.get(j + 1)) {
-                            double wjk = hiddenN.getConnection(neuron.id).getWeight();
-                            sumOutputs += pervPartialDerivatives[k] * wjk;
-                            k++;
-                        }
-                    }
-                    // TODO: Move pD calc to outside
-                    double partialDerivative = y * (1 - y) * sumOutputs;
-                    nowPartialDerivatives[n] = partialDerivative;
                     double deltaWeight = learningRate * partialDerivative * pervY;
                     double newWeight = connection.getWeight() + deltaWeight;
                     connection.setDeltaWeight(deltaWeight);
