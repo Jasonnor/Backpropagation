@@ -61,7 +61,7 @@ public class MainFrame {
     private Point mouse;
     private int maxTimes = 1000;
     private int magnification = 50;
-    private int hidden = 4;
+    private String hidden = "4,4";
     private double momentum = 0.7;
     private double learningRate = 0.1;
     private double threshold = 0;
@@ -126,14 +126,7 @@ public class MainFrame {
             }
 
             void changeHidden() {
-                try {
-                    alertBackground(hiddenTextField, false);
-                    hidden = Integer.valueOf(hiddenTextField.getText());
-                    startTrain(trainData);
-                } catch (NumberFormatException e) {
-                    alertBackground(hiddenTextField, true);
-                    hidden = 4;
-                }
+                hidden = hiddenTextField.getText();
             }
         });
         momentumTextField.getDocument().addDocumentListener(new DocumentListener() {
@@ -153,7 +146,6 @@ public class MainFrame {
                 try {
                     alertBackground(momentumTextField, false);
                     momentum = Double.valueOf(momentumTextField.getText());
-                    startTrain(trainData);
                 } catch (NumberFormatException e) {
                     alertBackground(momentumTextField, true);
                     momentum = 0.5;
@@ -177,7 +169,6 @@ public class MainFrame {
                 try {
                     alertBackground(learningTextField, false);
                     learningRate = Double.valueOf(learningTextField.getText());
-                    startTrain(trainData);
                 } catch (NumberFormatException e) {
                     alertBackground(learningTextField, true);
                     learningRate = 0.5f;
@@ -201,7 +192,6 @@ public class MainFrame {
                 try {
                     alertBackground(thresholdTextField, false);
                     threshold = Double.valueOf(thresholdTextField.getText());
-                    startTrain(trainData);
                 } catch (NumberFormatException e) {
                     alertBackground(thresholdTextField, true);
                     threshold = 0;
@@ -225,7 +215,6 @@ public class MainFrame {
                 try {
                     alertBackground(maxTimesValue, false);
                     maxTimes = Integer.valueOf(maxTimesValue.getText());
-                    startTrain(trainData);
                 } catch (NumberFormatException e) {
                     alertBackground(maxTimesValue, true);
                     maxTimes = 1000;
@@ -249,7 +238,6 @@ public class MainFrame {
                 try {
                     alertBackground(minErrorTextField, false);
                     minError = Double.valueOf(minErrorTextField.getText());
-                    startTrain(trainData);
                 } catch (NumberFormatException e) {
                     alertBackground(minErrorTextField, true);
                     minError = 0.01;
@@ -276,7 +264,6 @@ public class MainFrame {
                     else {
                         alertBackground(wRangeMinValue, false);
                         minRange = Double.valueOf(wRangeMinValue.getText());
-                        startTrain(trainData);
                     }
                 } catch (NumberFormatException e) {
                     alertBackground(wRangeMinValue, true);
@@ -304,7 +291,6 @@ public class MainFrame {
                     else {
                         alertBackground(wRangeMaxValue, false);
                         maxRange = Double.valueOf(wRangeMaxValue.getText());
-                        startTrain(trainData);
                     }
                 } catch (NumberFormatException e) {
                     alertBackground(wRangeMaxValue, true);
@@ -329,7 +315,6 @@ public class MainFrame {
                 try {
                     alertBackground(sizeTextField, false);
                     size = Double.valueOf(sizeTextField.getText());
-                    startTrain(trainData);
                 } catch (NumberFormatException e) {
                     alertBackground(sizeTextField, true);
                     size = 20.0;

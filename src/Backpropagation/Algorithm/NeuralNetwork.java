@@ -6,7 +6,7 @@ public class NeuralNetwork {
 
     private final Random rand = new Random();
     private final ArrayList<Neuron> inputLayer = new ArrayList<>();
-    private final ArrayList<Neuron> hiddenLayer = new ArrayList<>();
+    private final ArrayList<Neuron[]> hiddenLayers = new ArrayList<>();
     private final ArrayList<Neuron> outputLayer = new ArrayList<>();
 
     private double momentum;
@@ -15,44 +15,53 @@ public class NeuralNetwork {
     private ArrayList<Double[]> inputs = new ArrayList<>();
     private ArrayList<Double> outputKinds = new ArrayList<>();
 
-    public NeuralNetwork(ArrayList<Double[]> inputs, ArrayList<Double> outputKinds, int hidden, double momentum,
+    public NeuralNetwork(ArrayList<Double[]> inputs, ArrayList<Double> outputKinds, String hidden, double momentum,
                          double learningRate, double threshold, double minRange, double maxRange) {
         this.inputs = inputs;
         this.outputKinds = outputKinds;
-        int[] layers = new int[]{inputs.get(0).length - 1, hidden, 1};
         this.momentum = momentum;
         this.learningRate = learningRate;
-        for (int i = 0; i < layers.length; i++) {
-            if (i == 0) { // input layer
-                for (int j = 0; j < layers[i]; j++) {
-                    Neuron neuron = new Neuron();
-                    inputLayer.add(neuron);
-                }
-            } else if (i == 1) { // hidden layer
-                for (int j = 0; j < layers[i]; j++) {
-                    Neuron neuron = new Neuron();
-                    neuron.addConnections(inputLayer);
-                    hiddenLayer.add(neuron);
-                }
-            } else if (i == 2) { // output layer
-                for (int j = 0; j < layers[i]; j++) {
-                    Neuron neuron = new Neuron();
-                    neuron.addConnections(hiddenLayer);
-                    outputLayer.add(neuron);
+        int inputNeuron = inputs.get(0).length - 1;
+        int[] hiddenNeurons = Arrays.stream(hidden.split(",")).mapToInt(Integer::parseInt).toArray();
+        int outputNeuron = 1;
+        // input layer
+        for (int i = 0; i < inputNeuron; i++) {
+            Neuron neuron = new Neuron();
+            inputLayer.add(neuron);
+        }
+        // hidden layers
+        for (int i = 0; i < hiddenNeurons.length; i++) {
+            Neuron neurons[] = new Neuron[hiddenNeurons[i]];
+            if (i == 0) {
+                for (int j = 0; j < neurons.length; j++) {
+                    neurons[j] = new Neuron();
+                    neurons[j].addConnections(inputLayer);
                 }
             } else {
-                System.out.println("!Error NeuralNetwork init");
+                for (int j = 0; j < neurons.length; j++) {
+                    neurons[j] = new Neuron();
+                    neurons[j].addConnections(hiddenLayers.get(i - 1));
+                }
             }
+            hiddenLayers.add(neurons);
+        }
+        // output layer
+        for (int i = 0; i < outputNeuron; i++) {
+            Neuron neuron = new Neuron();
+            neuron.addConnections(hiddenLayers.get(hiddenLayers.size() - 1));
+            outputLayer.add(neuron);
         }
 
         // Initialize random weights
-        for (Neuron neuron : hiddenLayer) {
-            ArrayList<Connection> connections = neuron.getAllConnections();
-            for (Connection conn : connections) {
-                double newWeight = getRandomNumber(minRange, maxRange);
-                conn.setWeight(newWeight);
+        for (Neuron[] neurons : hiddenLayers) {
+            for (Neuron neuron : neurons) {
+                ArrayList<Connection> connections = neuron.getAllConnections();
+                for (Connection conn : connections) {
+                    double newWeight = getRandomNumber(minRange, maxRange);
+                    conn.setWeight(newWeight);
+                }
+                connections.get(0).setWeight(threshold);
             }
-            connections.get(0).setWeight(threshold);
         }
         for (Neuron neuron : outputLayer) {
             ArrayList<Connection> connections = neuron.getAllConnections();
@@ -85,7 +94,11 @@ public class NeuralNetwork {
     }
 
     private void activate() {
-        hiddenLayer.forEach(Neuron::calculateOutput);
+        for (Neuron[] neurons : hiddenLayers) {
+            for (Neuron neuron : neurons) {
+                neuron.calculateOutput();
+            }
+        }
         outputLayer.forEach(Neuron::calculateOutput);
     }
 
@@ -105,37 +118,55 @@ public class NeuralNetwork {
             }
             i++;
         }
-
-        for (Neuron n : hiddenLayer) {
-            ArrayList<Connection> connections = n.getAllConnections();
-            for (Connection con : connections) {
-                double pervY = con.leftNeuron.getOutput();
-                double y = n.getOutput();
+        double[] pervPartialDerivatives = new double[0];
+        for (int j = hiddenLayers.size() - 1; j >= 0; j--) {
+            Neuron[] neurons = hiddenLayers.get(j);
+            double[] nowPartialDerivatives = new double[neurons.length];
+            int n = 0;
+            for (Neuron neuron : neurons) {
+                double y = neuron.getOutput();
                 double sumOutputs = 0;
-                int j = 0;
-                for (Neuron outputN : outputLayer) {
-                    double wjk = outputN.getConnection(n.id).getWeight();
-                    double dy = expectedOutput[j];
-                    double yk = outputN.getOutput();
-                    sumOutputs += (dy - yk) * yk * (1 - yk) * wjk;
-                    j++;
+                if (j == hiddenLayers.size() - 1) {
+                    int k = 0;
+                    for (Neuron outputN : outputLayer) {
+                        double wjk = outputN.getConnection(neuron.id).getWeight();
+                        double dy = expectedOutput[k];
+                        double yk = outputN.getOutput();
+                        sumOutputs += (dy - yk) * yk * (1 - yk) * wjk;
+                        k++;
+                    }
+                } else {
+                    int k = 0;
+                    for (Neuron hiddenN : hiddenLayers.get(j + 1)) {
+                        double wjk = hiddenN.getConnection(neuron.id).getWeight();
+                        sumOutputs += pervPartialDerivatives[k] * wjk;
+                        k++;
+                    }
                 }
                 double partialDerivative = y * (1 - y) * sumOutputs;
-                double deltaWeight = learningRate * partialDerivative * pervY;
-                double newWeight = con.getWeight() + deltaWeight;
-                con.setDeltaWeight(deltaWeight);
-                con.setWeight(newWeight + momentum * con.getPrevDeltaWeight());
+                nowPartialDerivatives[n] = partialDerivative;
+                ArrayList<Connection> connections = neuron.getAllConnections();
+                for (Connection connection : connections) {
+                    double pervY = connection.leftNeuron.getOutput();
+                    double deltaWeight = learningRate * partialDerivative * pervY;
+                    double newWeight = connection.getWeight() + deltaWeight;
+                    connection.setDeltaWeight(deltaWeight);
+                    connection.setWeight(newWeight + momentum * connection.getPrevDeltaWeight());
+                }
+                n++;
             }
+            pervPartialDerivatives = nowPartialDerivatives;
         }
     }
 
     public String run(int maxSteps, double minError) {
         int i;
         // Train neural network until minError reached or maxSteps exceeded
-        double error = 1;
+        double squareError = 10;
+        double minSquareError = 1000000;
         int correct = 0;
-        for (i = 0; i < maxSteps && error > minError; i++) {
-            error = 0;
+        for (i = 0; i < maxSteps && squareError > minError; i++) {
+            squareError = 0;
             correct = 0;
             for (Double[] input : inputs) {
                 setInput(input);
@@ -144,7 +175,7 @@ public class NeuralNetwork {
                 Double[] expectedOutput = new Double[]{input[input.length - 1]};
                 for (int j = 0; j < expectedOutput.length; j++) {
                     double err = Math.pow(expectedOutput[j] - output[j], 2) / 2;
-                    error += err;
+                    squareError += err;
                 }
                 double distance = Math.abs(outputKinds.get(0) - output[0]);
                 int idx = 0;
@@ -159,10 +190,39 @@ public class NeuralNetwork {
                 if (y == expectedOutput[0]) ++correct;
                 applyBackpropagation(expectedOutput);
             }
+            if (squareError < minSquareError) {
+                minSquareError = squareError;
+                for (Neuron[] neurons : hiddenLayers) {
+                    for (Neuron neuron : neurons) {
+                        ArrayList<Connection> connections = neuron.getAllConnections();
+                        for (Connection conn : connections) {
+                            conn.setBestWeight(conn.getWeight());
+                        }
+                    }
+                }
+                for (Neuron neuron : outputLayer) {
+                    ArrayList<Connection> connections = neuron.getAllConnections();
+                    for (Connection conn : connections) {
+                        conn.setBestWeight(conn.getWeight());
+                    }
+                }
+            }
+        }
+        if (i == maxSteps) {
+            for (Neuron[] neurons : hiddenLayers) {
+                for (Neuron neuron : neurons) {
+                    ArrayList<Connection> connections = neuron.getAllConnections();
+                    connections.forEach(Connection::setWeightAsBest);
+                }
+            }
+            for (Neuron neuron : outputLayer) {
+                ArrayList<Connection> connections = neuron.getAllConnections();
+                connections.forEach(Connection::setWeightAsBest);
+            }
         }
         printAllWeights();
         // result = runTimes + MSE + trainRate
-        return String.valueOf(i) + " " + error + " " + (double) correct / inputs.size() * 100 + "%";
+        return String.valueOf(i) + " " + squareError + " " + (double) correct / inputs.size() * 100 + "%";
     }
 
     public String test(ArrayList<Double[]> inputs, int maxSteps, double minError) {
@@ -228,7 +288,7 @@ public class NeuralNetwork {
     }
 
     private void printAllWeights() {
-        hiddenLayer.forEach(this::printWeights);
+        //hiddenLayers.forEach(this::printWeights);
         outputLayer.forEach(this::printWeights);
         System.out.println();
     }

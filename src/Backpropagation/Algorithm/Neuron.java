@@ -38,6 +38,14 @@ class Neuron {
         }
     }
 
+    void addConnections(Neuron[] neurons) {
+        for (Neuron n : neurons) {
+            Connection con = new Connection(n);
+            connections.add(con);
+            connectionLookup.put(n.id, con);
+        }
+    }
+
     Connection getConnection(int neuronIndex) {
         return connectionLookup.get(neuronIndex);
     }
