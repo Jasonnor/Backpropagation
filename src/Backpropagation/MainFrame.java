@@ -48,6 +48,7 @@ public class MainFrame {
     private JLabel MSEValue;
     private JTextField sizeTextField;
     private JCheckBox drawModeCheckBox;
+    private JButton trainByAllDataButton;
     private DefaultTableModel trainTableModel = new DefaultTableModel();
     private DefaultTableModel testTableModel = new DefaultTableModel();
     private DecimalFormat df = new DecimalFormat("####0.00");
@@ -87,8 +88,9 @@ public class MainFrame {
                 loadFile(fileChooser);
             }
         });
-        generateButton.addActionListener(e -> startTrain());
-        generateMenuItem.addActionListener(e -> startTrain());
+        generateButton.addActionListener(e -> startTrain(trainData));
+        generateMenuItem.addActionListener(e -> startTrain(trainData));
+        trainByAllDataButton.addActionListener(e -> startTrain(testData));
         zoomerSlider.addChangeListener(e -> {
             zoomerSlider.setBorder(
                     BorderFactory.createTitledBorder(null,
@@ -364,7 +366,7 @@ public class MainFrame {
             testTable.setModel(testTableModel);
             // TODO - show y result at data table
             generateButton.setEnabled(true);
-            startTrain();
+            startTrain(trainData);
         } catch (IOException e1) {
             e1.printStackTrace();
         }
@@ -410,8 +412,8 @@ public class MainFrame {
         }
     }
 
-    private void startTrain() {
-        network = new NeuralNetwork(trainData, outputKinds, hidden, momentum,
+    private void startTrain(ArrayList<Double[]> inputs) {
+        network = new NeuralNetwork(inputs, outputKinds, hidden, momentum,
                 learningRate, threshold, minRange, maxRange);
         String[] resultTrain = network.run(maxTimes, minError).split(" ");
         timesValue.setText(resultTrain[0]);
