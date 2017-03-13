@@ -16,7 +16,7 @@ The purpose of program is training to cut a number of groups of hyperplanes and 
 
 1. Menu (Files, Skins)
 2. Output
-3. background rendering mode & zoom level
+3. Background rendering mode & zoom level
 4. Read the file
 5. File path
 6. Adjustable parameters
